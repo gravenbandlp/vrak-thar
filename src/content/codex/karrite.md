@@ -2,11 +2,10 @@
 titolo: Karrite
 categoria: concetti
 verificata: true
-ordine: 125
+ordine: 210
 ---
-
-Il minerale che si tira fuori da Odarn. Fibroso, si sfalda in polvere che i filtri di serie non
-fermano, e una volta dentro non esce più: i polmoni cicatrizzano e in quindici o vent'anni hai
-finito. Si chiama **il gesso** e ha ucciso mia madre e mio padre. Serve a fare bobine iperspaziali,
-così qualcuno attraversa la galassia in tre giorni. Czerka lo mette a referto come difetto di
-specie, perché un difetto di specie non si risarcisce.
+Il minerale che si tira fuori da Odarn. Fibroso: si sfalda in una polvere che i filtri di serie
+non fermano e che una volta dentro non esce più. I polmoni cicatrizzano, il fiato cala di anno in
+anno, e in quindici o vent'anni hai finito. In colonia si chiama **il gesso**. Da vent'anni tutta
+la produzione va alla divisione impianti e i turni sono più lunghi. Mia madre e mio padre sono in
+quel conteggio.

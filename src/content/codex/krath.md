@@ -1,8 +1,9 @@
 ---
 titolo: Krath
 categoria: fazioni
-verificata: true
-ordine: 60
+verificata: false
+ordine: 110
 ---
-Aristocratici di Empress Teta che studiano tomi Sith come passatempo da salotto. Dilettantismo che
-diventa orrore. Ne ho sentito parlare da un mercante che era troppo contento di saperne i dettagli.
+Roba di due secoli fa. Aristocratici di Empress Teta che studiavano tomi Sith come passatempo da
+salotto, finché il passatempo non se li è mangiati. Finiti da un pezzo. Se ne parla ancora perché
+la storia piace soprattutto a chi non l'ha vissuta.

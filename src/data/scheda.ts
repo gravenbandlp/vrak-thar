@@ -183,13 +183,13 @@ export const abilita = {
 
 export const inventario = {
   voci: [
-    { v: 'Spada laser', n: 'fornita dal maestro' },
+    { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Crediti', n: '3d4 × 100 iniziali — da tirare' },
     { v: 'Slot libero', n: '______________', vuoto: true },
   ],
   nota:
-    'Dal <b>7° livello eroico</b> potrai costruire la tua spada laser: 1.500 crediti di componenti, 24 ore ininterrotte e una prova di Usare la Forza CD 20. Una volta costruita, spendi un Punto Forza per sintonizzarla e ottieni <b>+1 a tutti i tiri per colpire</b> con quell\'arma.',
+    'La lama che porta è un assemblaggio di componenti comprati al mercato: funziona, ma non è costruita secondo la procedura e non è sintonizzata, quindi non dà nessun bonus.<br>Dal <b>7° livello eroico</b> potrai costruirne una tua come si deve: 1.500 crediti di componenti, 24 ore ininterrotte e una prova di Usare la Forza CD 20. Una volta costruita, spendi un Punto Forza per sintonizzarla e ottieni <b>+1 a tutti i tiri per colpire</b> con quell\'arma.',
 };
 
 export const progressione = [
