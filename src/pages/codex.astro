@@ -1,0 +1,115 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+/* Etichetta singolare mostrata sulla card. */
+const ETICHETTE: Record<string, { card: string; filtro: string }> = {
+  tradizioni: { card: 'Tradizione', filtro: 'Tradizioni' },
+  fazioni: { card: 'Fazione', filtro: 'Fazioni' },
+  luoghi: { card: 'Luogo', filtro: 'Luoghi' },
+  persone: { card: 'Persona', filtro: 'Persone' },
+  concetti: { card: 'Concetto', filtro: 'Concetti' },
+};
+
+const voci = (await getCollection('codex')).sort(
+  (a, b) => a.data.ordine - b.data.ordine || a.data.titolo.localeCompare(b.data.titolo)
+);
+
+const rese = await Promise.all(
+  voci.map(async (v) => ({ ...v, Content: (await render(v)).Content }))
+);
+
+/* I filtri si ricavano dalle voci esistenti, non sono scritti a mano. */
+const categorie = [...new Set(voci.map((v) => v.data.categoria))].sort(
+  (a, b) => Object.keys(ETICHETTE).indexOf(a) - Object.keys(ETICHETTE).indexOf(b)
+);
+---
+
+<Layout titolo="Codex" descrizione="Le voci di mondo che Vrak Thar conosce, o crede di conoscere.">
+
+  <section>
+    <div class="bar"><h2>Codex</h2><span class="hint">solo ciò che Vrak conosce</span></div>
+    <div class="panel">
+      <div class="meta">
+        Voci scritte dal punto di vista del personaggio: contengono quello che Vrak <b>sa o crede di sapere</b>,
+        non la verità oggettiva del setting. Una voce può essere incompleta o sbagliata, e va aggiornata
+        quando il gioco la smentisce.
+      </div>
+    </div>
+
+    <label class="sr" for="cxSearch">Cerca nel codex</label>
+    <input type="search" id="cxSearch" placeholder="Cerca una voce…" autocomplete="off" />
+
+    <div class="filters" id="cxFilters">
+      <button class="btn" data-cat="all" aria-pressed="true" type="button">Tutte</button>
+      {categorie.map((c) => (
+        <button class="btn" data-cat={c} aria-pressed="false" type="button">{ETICHETTE[c].filtro}</button>
+      ))}
+    </div>
+
+    <div class="cx-grid" id="cxGrid">
+      {rese.map(({ data, Content }) => (
+        <article class="cx" data-cat={data.categoria}>
+          <div class="cat">
+            {ETICHETTE[data.categoria].card}
+            {!data.verificata && <span style="color:var(--text-dim)"> · da verificare</span>}
+          </div>
+          <h3>{data.titolo}</h3>
+          <Content />
+        </article>
+      ))}
+    </div>
+
+    <div class="cx-empty" id="cxEmpty" hidden>Nessuna voce corrisponde</div>
+  </section>
+
+  <section>
+    <div class="bar"><h2>Come aggiungere una voce</h2><span class="hint">promemoria</span></div>
+    <div class="panel">
+      <div class="meta">
+        <span class="lbl">Nuova voce</span><br>
+        Un file in <b>src/content/codex/</b> con frontmatter <b>titolo</b>, <b>categoria</b>,
+        <b>verificata</b> e <b>ordine</b>. La categoria deve essere una di quelle previste in
+        <b>src/content.config.ts</b>: aggiungerne una lì la fa comparire da sola tra i filtri.
+      </div>
+      <div class="meta" style="margin-top:14px">
+        <span class="lbl">verificata: false</span><br>
+        Segnala che la voce è basata su dicerie e va confermata in gioco. Ricerca e filtro
+        continuano a funzionare senza toccare nulla.
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const grid = document.getElementById('cxGrid')!;
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>('.cx'));
+  const search = document.getElementById('cxSearch') as HTMLInputElement;
+  const empty = document.getElementById('cxEmpty')!;
+  const btns = Array.from(document.querySelectorAll<HTMLElement>('#cxFilters .btn'));
+  let cat = 'all';
+
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach((c) => {
+      const okCat = cat === 'all' || c.getAttribute('data-cat') === cat;
+      const okTxt = !q || (c.textContent || '').toLowerCase().includes(q);
+      const show = okCat && okTxt;
+      c.hidden = !show;
+      if (show) shown++;
+    });
+    empty.hidden = shown > 0;
+  }
+
+  btns.forEach((b) => {
+    b.addEventListener('click', () => {
+      cat = b.getAttribute('data-cat') || 'all';
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      apply();
+    });
+  });
+  search.addEventListener('input', apply);
+  apply();
+</script>

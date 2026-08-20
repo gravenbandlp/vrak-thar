@@ -1,0 +1,56 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { profilo } from '../data/scheda.ts';
+
+const bg = await getEntry('pagine', 'background');
+if (!bg) throw new Error('Manca src/content/pagine/background.md');
+const { Content } = await render(bg);
+const d = bg.data;
+---
+
+<Layout titolo="Background" descrizione={d.intro}>
+
+  <section>
+    <div class="bar">
+      <h2>{d.titolo}</h2>
+      {d.nota && <span class="hint">{d.nota}</span>}
+    </div>
+    <div class="ident">
+      <div class="portrait-frame lg">
+        <img src={profilo.ritratto} alt={profilo.ritrattoAlt} width="900" height="900" />
+      </div>
+      <div>
+        <h1 class="pname">{profilo.nome} <b>{profilo.cognome}</b></h1>
+        <div class="psub">{d.sottotitolo}</div>
+        <div class="idstats">
+          {d.chip.map((c) => <span class="chip">{c.l} <b>{c.v}</b></span>)}
+        </div>
+        {d.intro && <div class="meta" style="margin-top:16px">{d.intro}</div>}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="bar"><h2>Storia</h2></div>
+    <div class="panel prose">
+      <Content />
+    </div>
+  </section>
+
+  {d.ganci.length > 0 && (
+    <section>
+      <div class="bar"><h2>Ganci narrativi</h2><span class="hint">per il master</span></div>
+      <div class="grid c2">
+        {d.ganci.map((g) => (
+          <div class="entry">
+            <div class="t">{g.t}</div>
+            <div class="m">{g.m}</div>
+            <p>{g.p}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+</Layout>

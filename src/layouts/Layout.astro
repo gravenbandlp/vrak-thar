@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  /** Finisce nel <title> dopo "Vrak Thar — " */
+  titolo: string;
+  descrizione?: string;
+}
+
+const { titolo, descrizione = 'Scheda, diario e codex di Vrak Thar, Zabrak Matukai della Vecchia Repubblica.' } = Astro.props;
+
+const tabs = [
+  {
+    href: '/',
+    label: 'Background',
+    icon: '<circle cx="12" cy="7" r="3.4"/><path d="M4.5 20c0-4 3.4-6.4 7.5-6.4S19.5 16 19.5 20"/>',
+  },
+  {
+    href: '/diario',
+    label: 'Diario',
+    icon: '<path d="M5 4h11l3 3v13H5z"/><path d="M8 10h8M8 14h8M8 18h5"/>',
+  },
+  {
+    href: '/scheda',
+    label: 'Scheda',
+    icon: '<path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z"/>',
+  },
+  {
+    href: '/codex',
+    label: 'Codex',
+    icon: '<path d="M4 5.5A2.5 2.5 0 016.5 3H19v15H6.5A2.5 2.5 0 004 20.5z"/><path d="M8 8h7M8 12h7"/>',
+  },
+];
+
+/* /diario.html e /diario sono la stessa pagina: normalizzo prima di confrontare */
+const here = Astro.url.pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content={descrizione}>
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Vrak Thar — {titolo}</title>
+</head>
+<body>
+<div class="wrap">
+<div class="console">
+<div class="screen">
+
+  <div class="brand">
+    <a class="n" href="/">Vrak <b>Thar</b></a>
+    <span class="s">Zabrak · Matukai · Vecchia Repubblica</span>
+  </div>
+
+  <nav class="tabs" aria-label="Sezioni">
+    {tabs.map((t) => (
+      <a class="tab" href={t.href} aria-current={here === t.href ? 'page' : undefined}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={t.icon} />
+        {t.label}
+      </a>
+    ))}
+  </nav>
+
+  <slot />
+
+  <div class="legal">
+    Star Wars Roleplaying Game — Saga Edition<br>
+    Core Rulebook · Knights of the Old Republic Campaign Guide<br>
+    Sito personale di gioco · nessuna finalità commerciale
+  </div>
+
+</div>
+</div>
+</div>
+
+<script is:inline src="/ui-sound.js" defer></script>
+</body>
+</html>

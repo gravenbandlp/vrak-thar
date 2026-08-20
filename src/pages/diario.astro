@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+/* Ordine inverso: la sessione più recente in cima. */
+const voci = (await getCollection('diario')).sort((a, b) => b.data.sessione - a.data.sessione);
+
+const rese = await Promise.all(
+  voci.map(async (v) => ({ ...v, Content: (await render(v)).Content }))
+);
+
+const conta = `${voci.length} ${voci.length === 1 ? 'voce' : 'voci'}`;
+const num = (n: number) => String(n).padStart(2, '0');
+---
+
+<Layout titolo="Diario" descrizione="Il diario di sessione di Vrak Thar, scritto in prima persona.">
+
+  <section>
+    <div class="bar"><h2>Diario personale</h2><span class="hint">voce di Vrak Thar</span></div>
+    <div class="panel">
+      <div class="meta">
+        Registro tenuto in prima persona, sessione per sessione. Non è un verbale della partita: è quello che
+        Vrak <b>sa, crede e ricorda</b> — comprese le cose sbagliate. Le voci più vecchie non si correggono
+        a posteriori, si contraddicono con quelle nuove.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="bar"><h2>Registro</h2><span class="hint">{conta}</span></div>
+
+    <div class="log">
+      {rese.map(({ data, Content }) => (
+        <article class="log-entry">
+          <div class="head">
+            <span class="sess">Sessione {num(data.sessione)}</span>
+            <span class="date">— {data.data}</span>
+          </div>
+          <h3>{data.titolo}</h3>
+          <div class="body">
+            <Content />
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="bar"><h2>Come aggiungere una voce</h2><span class="hint">promemoria</span></div>
+    <div class="panel">
+      <div class="meta">
+        <span class="lbl">Nuova sessione</span><br>
+        Crea un file in <b>src/content/diario/</b> — per esempio <b>02-nome-della-voce.md</b> — con
+        frontmatter <b>sessione</b>, <b>data</b>, <b>titolo</b>, e il testo sotto in markdown.
+        L'ordinamento è automatico: numero di sessione decrescente.
+      </div>
+      <div class="meta" style="margin-top:14px">
+        <span class="lbl">Pubblicare</span><br>
+        <b>git add . &amp;&amp; git commit &amp;&amp; git push</b>: Cloudflare Pages ricostruisce il sito da solo.
+      </div>
+    </div>
+  </section>
+
+</Layout>

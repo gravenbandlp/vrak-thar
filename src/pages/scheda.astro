@@ -1,0 +1,331 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  profilo,
+  caratteristiche,
+  difese,
+  risorse,
+  conditionTrack,
+  conditionNota,
+  attacchi,
+  attitudini,
+  talenti,
+  poteri,
+  abilita,
+  inventario,
+  progressione,
+} from '../data/scheda.ts';
+
+const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
+---
+
+<Layout titolo="Scheda" descrizione="Scheda di Vrak Thar per Star Wars Saga Edition, con condition track e risorse interattive.">
+
+  <!-- ============ IDENTITÀ ============ -->
+  <section id="stato">
+    <div class="bar"><h2>Profilo</h2><span class="hint">Vecchia Repubblica</span></div>
+
+    <div class="ident">
+      <div>
+        <div class="portrait-frame">
+          <img src={profilo.ritratto} alt={profilo.ritrattoAlt} width="900" height="900" />
+        </div>
+      </div>
+
+      <div>
+        <h1 class="pname">{profilo.nome} <b>{profilo.cognome}</b></h1>
+        <div class="psub">{profilo.sottotitolo}</div>
+        <div class="idstats">
+          {profilo.chip.map((c) => <span class="chip">{c.l} <b>{c.v}</b></span>)}
+        </div>
+        <div class="meta" style="margin-top:16px">
+          <span class="lbl">{profilo.tratti.etichetta}</span><br>
+          <Fragment set:html={profilo.tratti.testo} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARATTERISTICHE ============ -->
+  <section>
+    <div class="bar"><h2>Caratteristiche</h2></div>
+    <div class="abils">
+      {caratteristiche.map((c) => (
+        <div class="abil"><div class="l">{c.l}</div><div class="s">{c.s}</div><div class="m">{c.m}</div></div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ DIFESE + VITALI ============ -->
+  <section>
+    <div class="bar"><h2>Difese e risorse</h2><span class="hint" id="condLabel">stato normale</span></div>
+
+    <div class="defs" style="margin-bottom:14px">
+      {difese.map((d) => (
+        <div class:list={['def', d.soglia && 'th']}>
+          <div class="l">{d.l}</div>
+          <div class="v cond" data-base={d.base}>{d.base}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="grid c2">
+      <div class="panel">
+        <div class="vital">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7FE3A0" stroke-width="2"><path d="M12 6v12M6 12h12"/></svg></div>
+          <div style="flex:1">
+            <div class="cap">Punti Ferita</div>
+            <div><span class="big" id="hpNow">{risorse.hpMax}</span> <span style="color:var(--text-dim)">/ {risorse.hpMax}</span></div>
+          </div>
+        </div>
+        <div class="bar-track"><i id="hpBar" style="width:100%"></i></div>
+        <div class="btnrow">
+          <button class="btn" data-hp="-1" type="button">−1</button>
+          <button class="btn" data-hp="-5" type="button">−5</button>
+          <button class="btn" data-hp="-10" type="button">−10</button>
+          <button class="btn" data-hp="1" type="button">+1</button>
+          <button class="btn" data-hp="5" type="button">+5</button>
+          <button class="btn wind" id="windBtn" type="button">Second Wind +{risorse.secondWind}</button>
+        </div>
+        <div class="meta" style="margin-top:12px" set:html={risorse.hpNota} />
+      </div>
+
+      <div class="panel">
+        <div class="vital">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4FC3F7" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+          <div style="flex:1">
+            <div class="cap">{risorse.fpTitolo}</div>
+            <div><span class="big" id="fpCount">{risorse.fpMax}</span> <span style="color:var(--text-dim)">/ {risorse.fpMax}</span></div>
+          </div>
+        </div>
+        <div class="pips" id="fpPips"></div>
+        <div class="meta" set:html={risorse.fpNota} />
+        <div class="meta" style="margin-top:12px">
+          <span class="lbl">Formule</span><br>
+          <Fragment set:html={risorse.formule} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONDITION TRACK ============ -->
+  <section>
+    <div class="bar"><h2>Condition Track</h2><span class="hint">clicca — la scheda si ricalcola</span></div>
+    <div class="panel">
+      <div class="steps" id="steps">
+        {conditionTrack.map((s) => (
+          <button class:list={['step', s.ko && 'ko']} data-pen={s.pen} aria-pressed={s.pen === 0 ? 'true' : 'false'} type="button">
+            {s.l}<small>{s.nome}</small>
+          </button>
+        ))}
+      </div>
+      <div class="meta" set:html={conditionNota} />
+    </div>
+  </section>
+
+  <!-- ============ ATTACCHI ============ -->
+  <section id="attacchi">
+    <div class="bar"><h2>Attacchi</h2><span class="hint">{attacchi.hint}</span></div>
+    <table>
+      <thead>
+        <tr><th style="width:32%">Modalità</th><th style="width:14%">Colpire</th><th style="width:19%">Danni</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        {attacchi.righe.map((r) => (
+          <tr>
+            <td>{r.modo}</td>
+            <td class="n cond" data-base={r.colpire} data-sign="1">{segno(r.colpire)}</td>
+            <td class="d">{r.danni}</td>
+            <td class="note">{r.note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <div class="meta" style="margin-top:6px" set:html={attacchi.nota} />
+  </section>
+
+  <!-- ============ ATTITUDINI + TALENTI ============ -->
+  <section id="attitudini">
+    <div class="bar"><h2>Attitudini e talenti</h2></div>
+    <div class="grid c2">
+
+      <div class="panel">
+        <div class="meta" style="margin-bottom:10px"><span class="lbl">{attitudini.etichetta}</span></div>
+        {attitudini.voci.map((v) => (
+          <div class="entry">
+            <div class="t">{v.t}</div>
+            <div class="m">{v.m}</div>
+            <p set:html={v.p} />
+          </div>
+        ))}
+        <div class="alert" set:html={attitudini.alert} />
+      </div>
+
+      <div class="panel">
+        <div class="meta" style="margin-bottom:10px"><span class="lbl">Talenti</span></div>
+        {talenti.map((v) => (
+          <div class="entry">
+            <div class="t">{v.t}</div>
+            <div class="m">{v.m}</div>
+            <p set:html={v.p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POTERI ============ -->
+  <section id="forza">
+    <div class="bar"><h2>Suite di poteri</h2><span class="hint">clicca per segnare l'uso</span></div>
+    <div class="panel">
+      {poteri.voci.map((p) => (
+        <button class="power" aria-pressed="false" type="button">
+          <span class="dot"></span>
+          <span>
+            <span class="t">{p.t}</span>
+            <p set:html={p.p} />
+          </span>
+        </button>
+      ))}
+      <div class="meta" style="margin-top:12px" set:html={poteri.nota} />
+    </div>
+  </section>
+
+  <!-- ============ ABILITÀ ============ -->
+  <section id="abilita">
+    <div class="bar"><h2>Abilità</h2><span class="hint">½ livello + caratteristica + 5 se addestrato</span></div>
+    <div class="grid c2">
+      {abilita.colonne.map((col) => (
+        <div class="panel">
+          <ul class="skills">
+            {col.map((s) => (
+              <li class:list={[!s.addestrata && 'untr']}>
+                <span class="k">{s.k} <small>{s.sub}</small></span>
+                <span class="v cond" data-base={s.base} data-sign="1">{segno(s.base)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="meta" style="margin-top:10px" set:html={abilita.nota} />
+    <div class="alert" set:html={abilita.alert} />
+  </section>
+
+  <!-- ============ EQUIP + PROGRESSIONE ============ -->
+  <section id="equip">
+    <div class="bar"><h2>Equipaggiamento e progressione</h2></div>
+    <div class="grid c2">
+      <div class="panel">
+        <div class="meta" style="margin-bottom:10px"><span class="lbl">Inventario</span></div>
+        {inventario.voci.map((i, idx) => (
+          <div class="lozenge" style={idx < inventario.voci.length - 1 ? 'margin-bottom:8px' : undefined}>
+            <span style={i.vuoto ? 'color:var(--text-dim)' : undefined}>{i.v}</span>
+            <span style="color:var(--text-dim);font-size:12px">{i.n}</span>
+          </div>
+        ))}
+        <div class="meta" style="margin-top:14px" set:html={inventario.nota} />
+      </div>
+
+      <div class="panel">
+        <div class="meta" style="margin-bottom:10px"><span class="lbl">Prossimo livello</span></div>
+        {progressione.map((v) => (
+          <div class="entry">
+            <div class="t">{v.t}</div>
+            <div class="m">{v.m}</div>
+            <p set:html={v.p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="foot" style="margin-top:26px;text-align:center">
+    <button class="btn" id="resetAll" type="button">Ripristina la scheda</button>
+  </div>
+
+</Layout>
+
+<script define:vars={{ HP_MAX: risorse.hpMax, FP_MAX: risorse.fpMax, WIND: risorse.secondWind }}>
+(function(){
+  var state = { pen: 0, hp: HP_MAX };
+
+  /* ---- condition track ---- */
+  var stepBtns = [].slice.call(document.querySelectorAll('.step'));
+  var condCells = [].slice.call(document.querySelectorAll('.cond'));
+  var condLabel = document.getElementById('condLabel');
+
+  function renderCond(){
+    var pen = state.pen === 99 ? 10 : state.pen;
+    condCells.forEach(function(el){
+      var base = parseInt(el.getAttribute('data-base'), 10);
+      var v = base - pen;
+      el.textContent = (el.hasAttribute('data-sign') && v >= 0) ? '+' + v : String(v);
+      el.style.color = pen > 0 ? 'var(--red)' : '';
+    });
+    stepBtns.forEach(function(b){
+      b.setAttribute('aria-pressed', String(parseInt(b.getAttribute('data-pen'),10) === state.pen));
+    });
+    condLabel.textContent = state.pen === 0 ? 'stato normale'
+      : (state.pen === 99 ? 'privo di sensi' : 'penalità −' + state.pen + ' attiva');
+  }
+  stepBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      state.pen = parseInt(b.getAttribute('data-pen'), 10);
+      renderCond();
+    });
+  });
+
+  /* ---- punti ferita ---- */
+  var hpNow = document.getElementById('hpNow'), hpBar = document.getElementById('hpBar');
+  function renderHP(){
+    state.hp = Math.max(0, Math.min(HP_MAX, state.hp));
+    hpNow.textContent = state.hp;
+    hpBar.style.width = (state.hp / HP_MAX * 100) + '%';
+    hpBar.style.background = state.hp <= HP_MAX/4
+      ? 'linear-gradient(90deg,#8E2A18,#E2563F)'
+      : (state.hp <= HP_MAX/2 ? 'linear-gradient(90deg,#B4801C,#F2C14E)' : 'linear-gradient(90deg,#2E9BD4,#7FE3A0)');
+  }
+  [].forEach.call(document.querySelectorAll('[data-hp]'), function(b){
+    b.addEventListener('click', function(){ state.hp += parseInt(b.getAttribute('data-hp'),10); renderHP(); });
+  });
+  document.getElementById('windBtn').addEventListener('click', function(){ state.hp += WIND; renderHP(); });
+
+  /* ---- punti forza ---- */
+  var fpWrap = document.getElementById('fpPips'), fpCount = document.getElementById('fpCount');
+  function renderFP(){
+    var left = [].filter.call(fpWrap.children, function(p){ return p.getAttribute('aria-pressed') === 'false'; }).length;
+    fpCount.textContent = left;
+  }
+  for (var i = 0; i < FP_MAX; i++){
+    var p = document.createElement('button');
+    p.type = 'button';
+    p.className = 'pip';
+    p.setAttribute('aria-pressed','false');
+    p.setAttribute('aria-label','Punto Forza ' + (i+1));
+    p.addEventListener('click', function(){
+      this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      renderFP();
+    });
+    fpWrap.appendChild(p);
+  }
+
+  /* ---- poteri ---- */
+  [].forEach.call(document.querySelectorAll('.power'), function(b){
+    b.addEventListener('click', function(){
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  /* ---- reset ---- */
+  document.getElementById('resetAll').addEventListener('click', function(){
+    state.pen = 0; state.hp = HP_MAX;
+    renderCond(); renderHP();
+    [].forEach.call(document.querySelectorAll('.pip'), function(p){ p.setAttribute('aria-pressed','false'); });
+    [].forEach.call(document.querySelectorAll('.power'), function(p){ p.setAttribute('aria-pressed','false'); });
+    renderFP();
+  });
+
+  renderCond(); renderHP(); renderFP();
+})();
+</script>
