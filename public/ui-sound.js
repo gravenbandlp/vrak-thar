@@ -44,40 +44,39 @@
     return b;
   }
 
-  /* ---------- TAB: tick elettronico secco, pitch discendente ---------- */
+  /* ---------- TAB: data burst, due bip in sequenza ---------- */
+  /* Il secondo bip e' piu' acuto del primo: non legge come un click ma come
+     un terminale che conferma l'input. Dura in tutto ~113 ms, e la
+     navigazione va ritardata almeno altrettanto (vedi ATTESA_TAB). */
+  function bip(c, t, freq, amp, dur){
+    var g = c.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(amp, t + 0.003);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    g.connect(master);
+
+    /* banda stretta centrata poco sopra la fondamentale: toglie corpo
+       alla quadra e lascia solo lo squillo */
+    var bp = c.createBiquadFilter();
+    bp.type = 'bandpass';
+    bp.frequency.value = freq * 1.1;
+    bp.Q.value = 8;
+    bp.connect(g);
+
+    var o = c.createOscillator();
+    o.type = 'square';
+    o.frequency.setValueAtTime(freq, t);
+    o.connect(bp);
+    o.start(t); o.stop(t + dur + 0.01);
+  }
+
   function tabTick(){
     if (muted) return;
     var c = ready(); if (!c) return;
     var t = c.currentTime;
 
-    var out = c.createGain();
-    out.gain.setValueAtTime(0.0001, t);
-    out.gain.exponentialRampToValueAtTime(0.22, t + 0.004);
-    out.gain.exponentialRampToValueAtTime(0.0001, t + 0.115);
-    out.connect(master);
-
-    var bp = c.createBiquadFilter();
-    bp.type = 'bandpass';
-    bp.frequency.setValueAtTime(1650, t);
-    bp.Q.value = 4.5;
-    bp.connect(out);
-
-    var o1 = c.createOscillator();
-    o1.type = 'square';
-    o1.frequency.setValueAtTime(1180, t);
-    o1.frequency.exponentialRampToValueAtTime(745, t + 0.085);
-    o1.connect(bp);
-
-    var o2 = c.createOscillator();
-    o2.type = 'triangle';
-    o2.frequency.setValueAtTime(2370, t);
-    o2.frequency.exponentialRampToValueAtTime(1495, t + 0.085);
-    var g2 = c.createGain();
-    g2.gain.value = 0.32;
-    o2.connect(g2); g2.connect(bp);
-
-    o1.start(t); o2.start(t);
-    o1.stop(t + 0.14); o2.stop(t + 0.14);
+    bip(c, t,         988,  0.17, 0.032);
+    bip(c, t + 0.055, 1568, 0.15, 0.048);
 
     /* transiente meccanico iniziale */
     var nb = c.createBufferSource();
@@ -85,7 +84,7 @@
     var hp = c.createBiquadFilter();
     hp.type = 'highpass'; hp.frequency.value = 2400;
     var ng = c.createGain();
-    ng.gain.setValueAtTime(0.09, t);
+    ng.gain.setValueAtTime(0.07, t);
     ng.gain.exponentialRampToValueAtTime(0.0001, t + 0.018);
     nb.connect(hp); hp.connect(ng); ng.connect(master);
     nb.start(t); nb.stop(t + 0.02);
@@ -158,6 +157,7 @@
 
   /* ---------- wiring ---------- */
   var INTERNAL = '.step, .pip, .power, button.btn, a.btn, .cx';
+  var ATTESA_TAB = 130;
 
   function wire(){
     buildToggle();
@@ -169,12 +169,13 @@
       if (tab){
         tabTick();
         var href = tab.getAttribute('href');
-        /* Ritardo minimo per far suonare il tick prima che la pagina cambi.
+        /* Ritardo per far finire il tick prima che la pagina cambi: la
+           navigazione distrugge l'AudioContext e taglierebbe il secondo bip.
            Saltato per le ancore interne e per l'apertura in nuova scheda. */
         if (href && href.charAt(0) !== '#' &&
             e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey){
           e.preventDefault();
-          setTimeout(function(){ window.location.href = href; }, 95);
+          setTimeout(function(){ window.location.href = href; }, ATTESA_TAB);
         }
         return;
       }
