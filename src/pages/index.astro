@@ -29,9 +29,15 @@ function slugImg(titolo: string) {
       {d.nota && <span class="hint">{d.nota}</span>}
     </div>
     <div class="ident">
-      <div class="portrait-frame lg">
-        <img src={profilo.ritratto} alt={profilo.ritrattoAlt} width="900" height="900" />
-      </div>
+      <button class="portrait-frame lg apri-ritratto" type="button"
+              aria-label="Apri il ritratto intero di Vrak Thar">
+        <img src={profilo.ritratto} alt={profilo.ritrattoAlt} width="560" height="560" />
+        <span class="lente" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/><path d="M11 8.5v5M8.5 11h5"/>
+          </svg>
+        </span>
+      </button>
       <div>
         <h1 class="pname">{profilo.nome} <b>{profilo.cognome}</b></h1>
         <div class="psub">{d.sottotitolo}</div>
@@ -82,4 +88,51 @@ function slugImg(titolo: string) {
     </section>
   )}
 
+
+  <!-- ============ LIGHTBOX DEL RITRATTO ============ -->
+  <div class="lightbox" id="lbRitratto" hidden>
+    <div class="lb-sfondo" data-chiudi></div>
+    <figure class="lb-figura" role="dialog" aria-modal="true" aria-label="Ritratto intero di Vrak Thar">
+      <img src="/vrak-thar-intero.webp" width="928" height="1232" alt={profilo.ritrattoAltIntero} />
+      <div class="lb-piede">
+        <figcaption>{profilo.nome} <b>{profilo.cognome}</b></figcaption>
+        <button class="lb-chiudi btn" type="button" data-chiudi>Chiudi</button>
+      </div>
+    </figure>
+  </div>
+
 </Layout>
+
+<script is:inline>
+(function(){
+  var lb = document.getElementById('lbRitratto');
+  var apri = document.querySelector('.apri-ritratto');
+  if (!lb || !apri) return;
+  var chiudiBtn = lb.querySelector('.lb-chiudi');
+  var ultimoFocus = null;
+
+  function apriLb(){
+    ultimoFocus = document.activeElement;
+    lb.hidden = false;
+    /* blocca lo scorrimento della pagina sotto */
+    document.body.style.overflow = 'hidden';
+    chiudiBtn.focus();
+  }
+  function chiudiLb(){
+    lb.hidden = true;
+    document.body.style.overflow = '';
+    if (ultimoFocus) ultimoFocus.focus();
+  }
+
+  apri.addEventListener('click', apriLb);
+  lb.addEventListener('click', function(e){
+    if (e.target.closest('[data-chiudi]')) chiudiLb();
+  });
+  document.addEventListener('keydown', function(e){
+    if (lb.hidden) return;
+    if (e.key === 'Escape'){ chiudiLb(); return; }
+    /* con il lightbox aperto il focus non deve poter uscire dal dialogo */
+    if (e.key === 'Tab'){ e.preventDefault(); chiudiBtn.focus(); }
+  });
+})();
+</script>

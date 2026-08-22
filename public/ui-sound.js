@@ -156,7 +156,7 @@
   }
 
   /* ---------- wiring ---------- */
-  var INTERNAL = '.step, .pip, .power, button.btn, a.btn, .cx';
+  var INTERNAL = '.step, .pip, .power, button.btn, a.btn, .cx, .apri-ritratto';
   var ATTESA_TAB = 130;
 
   function wire(){

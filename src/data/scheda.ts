@@ -11,6 +11,8 @@ export const profilo = {
   ritratto: '/vrak-thar.jpg',
   ritrattoAlt:
     'Ritratto di Vrak Thar, guerriero Zabrak dal cranio rasato con corna e tatuaggi tribali neri sul volto',
+  ritrattoAltIntero:
+    'Vrak Thar a figura intera: Zabrak muscoloso in tunica di stoffa grezza incrociata sul petto, avambracci fasciati, spada laser accesa nella mano destra',
   chip: [
     { l: 'BAB', v: '+3' },
     { l: 'Velocità', v: '6 caselle' },
