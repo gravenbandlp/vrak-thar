@@ -178,7 +178,7 @@ export const abilita = {
   nota:
     'Il Jedi ottiene 2 + mod. Intelligenza abilità addestrate: con INT 10 solo due. Usare la Forza è <b>addestrata obbligatoria</b>, perché quasi tutte le sue applicazioni non funzionano senza. Percezione addestrata varrebbe +7 e avrebbe ottima sinergia con Heightened Awareness: candidata naturale per Skill Training a un livello futuro.',
   alert:
-    '<b>Regola della casa — Abilità Focalizzata</b><br>Su <b>Usare la Forza</b> il talento non dà +5 secco ma un bonus che scala col livello: <b>+1</b> dal liv. 1 · <b>+2</b> dal liv. 4 · <b>+3</b> dal liv. 8 · <b>+4</b> dal liv. 12 · <b>+5</b> dal liv. 16 · <b>+6</b> al liv. 20. Su tutte le altre abilità resta il +5 fisso da manuale.<br>Il <b>+8</b> attuale non è toccato dalla regola: quel +5 è il bonus da abilità addestrata, non il talento.',
+    '<b>Regola della casa — Abilità Focalizzata</b><br>Su <b>Usare la Forza</b> il talento non dà +5 secco ma un bonus che scala col livello: <b>+1</b> dal liv. 1 · <b>+2</b> dal liv. 4 · <b>+3</b> dal liv. 8 · <b>+4</b> dal liv. 12 · <b>+5</b> dal liv. 16 · <b>+6</b> al liv. 20. Su tutte le altre abilità resta il +5 fisso da manuale.',
 };
 
 export const inventario = {
@@ -189,7 +189,7 @@ export const inventario = {
     { v: 'Slot libero', n: '______________', vuoto: true },
   ],
   nota:
-    'La lama che porta è un assemblaggio di componenti comprati al mercato: funziona, ma non è costruita secondo la procedura e non è sintonizzata, quindi non dà nessun bonus.<br>Dal <b>7° livello eroico</b> potrai costruirne una tua come si deve: 1.500 crediti di componenti, 24 ore ininterrotte e una prova di Usare la Forza CD 20. Una volta costruita, spendi un Punto Forza per sintonizzarla e ottieni <b>+1 a tutti i tiri per colpire</b> con quell\'arma.',
+    'La lama che porta è un assemblaggio di componenti comprati al mercato: funziona, ma non è costruita secondo la procedura e non è sintonizzata, quindi non dà nessun bonus.',
 };
 
 export const progressione = [

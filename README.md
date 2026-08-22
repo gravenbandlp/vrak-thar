@@ -65,6 +65,34 @@ Testo in markdown.
 I pulsanti-filtro si generano dalle categorie effettivamente presenti. Per introdurne una nuova,
 aggiungila all'enum in `src/content.config.ts` e all'elenco `ETICHETTE` in `src/pages/codex.astro`.
 
+### Immagini degli elementi di rilievo
+
+I quattro riquadri in fondo alla pagina Background mostrano un **segnaposto** finché non c'è
+l'immagine. Metti il file in `public/rilievi/` e togli il commento al campo `img` della voce in
+`src/content/pagine/background.md`:
+
+```yaml
+  - t: Sahra Thar
+    m: Legame primario
+    p: >-
+      ...
+    img: /rilievi/sahra-thar.webp
+    alt: Ritratto di Sahra Thar
+```
+
+Il percorso atteso è scritto dentro il segnaposto stesso. Il riquadro è **3:2** con ritaglio
+`object-fit:cover` allineato in alto: tieni il soggetto nella metà superiore dell'immagine. Senza `alt` viene usato il titolo della voce.
+
+Le immagini vanno ridotte prima di entrare nel repo. `sharp` è già disponibile come dipendenza
+di Astro, quindi basta:
+
+```bash
+node -e "require('sharp')('originale.png').resize({width:1100}).webp({quality:78,effort:6}).toFile('public/rilievi/nome-voce.webp')"
+```
+
+1100px di larghezza copre il doppio della dimensione a cui la scheda viene mostrata: un PNG da
+1,7 MB scende sotto i 60 KB.
+
 ## Deploy su Cloudflare Pages
 
 1. Crea un repo su GitHub e fai push di questa cartella.

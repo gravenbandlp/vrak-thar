@@ -23,7 +23,7 @@ const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
 
   <!-- ============ IDENTITÀ ============ -->
   <section id="stato">
-    <div class="bar"><h2>Profilo</h2><span class="hint">Vecchia Repubblica</span></div>
+    <div class="bar"><h2>Profilo</h2><span class="hint"></span></div>
 
     <div class="ident">
       <div>
@@ -126,6 +126,7 @@ const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
   <!-- ============ ATTACCHI ============ -->
   <section id="attacchi">
     <div class="bar"><h2>Attacchi</h2><span class="hint">{attacchi.hint}</span></div>
+    <div class="tscroll">
     <table>
       <thead>
         <tr><th style="width:32%">Modalità</th><th style="width:14%">Colpire</th><th style="width:19%">Danni</th><th>Note</th></tr>
@@ -141,6 +142,7 @@ const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
         ))}
       </tbody>
     </table>
+    </div>
     <div class="meta" style="margin-top:6px" set:html={attacchi.nota} />
   </section>
 
@@ -221,7 +223,7 @@ const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
         {inventario.voci.map((i, idx) => (
           <div class="lozenge" style={idx < inventario.voci.length - 1 ? 'margin-bottom:8px' : undefined}>
             <span style={i.vuoto ? 'color:var(--text-dim)' : undefined}>{i.v}</span>
-            <span style="color:var(--text-dim);font-size:12px">{i.n}</span>
+            <span style="color:var(--text-dim);font-size:var(--fs-300)">{i.n}</span>
           </div>
         ))}
         <div class="meta" style="margin-top:14px" set:html={inventario.nota} />

@@ -12,7 +12,11 @@
 (function(){
   'use strict';
 
-  var ctx = null, master = null, muted = false;
+  /* Ogni tab ricarica la pagina, quindi la scelta va ricordata:
+     senza questo l'audio si riaccende a ogni navigazione. */
+  var STORE = 'vt-audio';
+
+  var ctx = null, master = null, muted = loadMuted();
 
   function init(){
     if (ctx) return ctx;
@@ -117,8 +121,15 @@
   }
 
   /* ---------- toggle audio ---------- */
-  var ICON_ON  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9v6h3.5L12 19V5L7.5 9z"/><path d="M15.5 9.5a3.5 3.5 0 010 5"/><path d="M18 7a7 7 0 010 10"/></svg>';
-  var ICON_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9v6h3.5L12 19V5L7.5 9z"/><path d="M16 10l4 4M20 10l-4 4"/></svg>';
+  var ICON_ON  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 9v6h3.5L12 19V5L7.5 9z"/><path d="M15.5 9.5a3.5 3.5 0 010 5"/><path d="M18 7a7 7 0 010 10"/></svg>';
+  var ICON_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 9v6h3.5L12 19V5L7.5 9z"/><path d="M16 10l4 4M20 10l-4 4"/></svg>';
+
+  function loadMuted(){
+    try { return localStorage.getItem(STORE) === 'off'; } catch(e){ return false; }
+  }
+  function saveMuted(v){
+    try { localStorage.setItem(STORE, v ? 'off' : 'on'); } catch(e){}
+  }
 
   function buildToggle(){
     var host = document.querySelector('.brand') || document.querySelector('.tabs');
@@ -126,16 +137,20 @@
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'btn sound-toggle';
-    b.setAttribute('aria-pressed', 'false');
-    b.setAttribute('aria-label', 'Disattiva i suoni dell\u2019interfaccia');
-    b.innerHTML = ICON_ON + '<span>Audio</span>';
+    b.title = 'Suoni dell’interfaccia';
+
+    /* Toggle standard: il nome accessibile resta "Audio" e lo stato
+       lo porta aria-pressed, dove true = suoni attivi. */
+    function paint(){
+      b.setAttribute('aria-pressed', String(!muted));
+      b.innerHTML = (muted ? ICON_OFF : ICON_ON) + '<span>Audio</span>';
+    }
+    paint();
+
     b.addEventListener('click', function(){
       muted = !muted;
-      b.setAttribute('aria-pressed', String(muted));
-      b.setAttribute('aria-label', muted
-        ? 'Attiva i suoni dell\u2019interfaccia'
-        : 'Disattiva i suoni dell\u2019interfaccia');
-      b.innerHTML = (muted ? ICON_OFF : ICON_ON) + '<span>Audio</span>';
+      saveMuted(muted);
+      paint();
       if (!muted) tabTick();
     });
     host.appendChild(b);

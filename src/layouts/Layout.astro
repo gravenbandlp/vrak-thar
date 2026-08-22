@@ -9,6 +9,8 @@ interface Props {
 
 const { titolo, descrizione = 'Scheda, diario e codex di Vrak Thar, Zabrak Matukai della Vecchia Repubblica.' } = Astro.props;
 
+const titoloCompleto = `Vrak Thar — ${titolo}`;
+
 const tabs = [
   {
     href: '/',
@@ -32,8 +34,18 @@ const tabs = [
   },
 ];
 
-/* /diario.html e /diario sono la stessa pagina: normalizzo prima di confrontare */
-const here = Astro.url.pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+/* /diario.html e /diario sono la stessa pagina: normalizzo prima di confrontare.
+   In build con format 'file' il pathname della home e' /index.html, che senza
+   l'ultima sostituzione non combacerebbe mai con l'href '/' della sua scheda. */
+const here = Astro.url.pathname
+  .replace(/\.html$/, '')
+  .replace(/\/index$/, '/')
+  .replace(/(.)\/+$/, '$1') || '/';
+
+/* URL assoluti (le anteprime social non accettano percorsi relativi), presi da `here`:
+   con build.format 'file' il pathname in build e' /scheda.html, ma i link del sito sono /scheda. */
+const canonico = new URL(here, Astro.site).href;
+const anteprima = new URL('/vrak-thar.jpg', Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -44,10 +56,27 @@ const here = Astro.url.pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/
 <meta name="description" content={descrizione}>
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href={canonico}>
+
+<!-- Anteprima quando il link viene incollato in chat -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vrak Thar">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content={titoloCompleto}>
+<meta property="og:description" content={descrizione}>
+<meta property="og:url" content={canonico}>
+<meta property="og:image" content={anteprima}>
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="Ritratto di Vrak Thar, Zabrak dai tatuaggi neri">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content={titoloCompleto}>
+<meta name="twitter:description" content={descrizione}>
+<meta name="twitter:image" content={anteprima}>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
-<title>Vrak Thar — {titolo}</title>
+<title>{titoloCompleto}</title>
 </head>
 <body>
 <div class="wrap">
@@ -70,11 +99,10 @@ const here = Astro.url.pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/
 
   <slot />
 
-  <div class="legal">
-    Star Wars Roleplaying Game — Saga Edition<br>
-    Core Rulebook · Knights of the Old Republic Campaign Guide<br>
-    Sito personale di gioco · nessuna finalità commerciale
-  </div>
+  <footer class="legal">
+    <p>Star Wars Roleplaying Game — Saga Edition</p>
+    <p>Sito personale di gioco a cura di <a href="https://lucapasini.net/" rel="author">Luca Pasini</a></p>
+  </footer>
 
 </div>
 </div>

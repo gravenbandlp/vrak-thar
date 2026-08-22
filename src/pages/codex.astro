@@ -38,7 +38,7 @@ const categorie = [...new Set(voci.map((v) => v.data.categoria))].sort(
     </div>
 
     <label class="sr" for="cxSearch">Cerca nel codex</label>
-    <input type="search" id="cxSearch" placeholder="Cerca una voce…" autocomplete="off" />
+    <input class="cx-search" type="search" id="cxSearch" placeholder="Cerca una voce…" autocomplete="off" />
 
     <div class="filters" id="cxFilters">
       <button class="btn" data-cat="all" aria-pressed="true" type="button">Tutte</button>
@@ -61,23 +61,6 @@ const categorie = [...new Set(voci.map((v) => v.data.categoria))].sort(
     </div>
 
     <div class="cx-empty" id="cxEmpty" hidden>Nessuna voce corrisponde</div>
-  </section>
-
-  <section>
-    <div class="bar"><h2>Come aggiungere una voce</h2><span class="hint">promemoria</span></div>
-    <div class="panel">
-      <div class="meta">
-        <span class="lbl">Nuova voce</span><br>
-        Un file in <b>src/content/codex/</b> con frontmatter <b>titolo</b>, <b>categoria</b>,
-        <b>verificata</b> e <b>ordine</b>. La categoria deve essere una di quelle previste in
-        <b>src/content.config.ts</b>: aggiungerne una lì la fa comparire da sola tra i filtri.
-      </div>
-      <div class="meta" style="margin-top:14px">
-        <span class="lbl">verificata: false</span><br>
-        Segnala che la voce è basata su dicerie e va confermata in gioco. Ricerca e filtro
-        continuano a funzionare senza toccare nulla.
-      </div>
-    </div>
   </section>
 
 </Layout>

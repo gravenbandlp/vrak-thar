@@ -45,20 +45,4 @@ const num = (n: number) => String(n).padStart(2, '0');
     </div>
   </section>
 
-  <section>
-    <div class="bar"><h2>Come aggiungere una voce</h2><span class="hint">promemoria</span></div>
-    <div class="panel">
-      <div class="meta">
-        <span class="lbl">Nuova sessione</span><br>
-        Crea un file in <b>src/content/diario/</b> — per esempio <b>02-nome-della-voce.md</b> — con
-        frontmatter <b>sessione</b>, <b>data</b>, <b>titolo</b>, e il testo sotto in markdown.
-        L'ordinamento è automatico: numero di sessione decrescente.
-      </div>
-      <div class="meta" style="margin-top:14px">
-        <span class="lbl">Pubblicare</span><br>
-        <b>git add . &amp;&amp; git commit &amp;&amp; git push</b>: Cloudflare Pages ricostruisce il sito da solo.
-      </div>
-    </div>
-  </section>
-
 </Layout>

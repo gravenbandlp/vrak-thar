@@ -4,6 +4,6 @@ categoria: tradizioni
 verificata: true
 ordine: 10
 ---
-La mia. La Forza si canalizza attraverso il corpo allenato: il fisico è il condotto, non
+La Forza si canalizza attraverso il corpo allenato: il fisico è il condotto, non
 l'ostacolo. Nessun tempio, nessun consiglio, nessuna gerarchia. Un maestro, uno o due discepoli,
-poi ci si separa. Non siamo ostili all'Ordine. Lo troviamo **astratto**.
+poi ci si separa. Così mi è stato spiegato.

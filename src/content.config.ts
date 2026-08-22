@@ -35,8 +35,19 @@ const pagine = defineCollection({
     nota: z.string().optional(),
     chip: z.array(z.object({ l: z.string(), v: z.string() })).default([]),
     intro: z.string().optional(),
-    ganci: z
-      .array(z.object({ t: z.string(), m: z.string(), p: z.string() }))
+    /* Elementi di rilievo: schede con immagine facoltativa.
+       Finche' img e' assente la pagina mostra un segnaposto col percorso da usare. */
+    rilievi: z
+      .array(
+        z.object({
+          t: z.string(),
+          m: z.string(),
+          /* accetta HTML inline: <b>, <br> */
+          p: z.string(),
+          img: z.string().optional(),
+          alt: z.string().optional(),
+        })
+      )
       .default([]),
   }),
 });

@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout titolo="Rotta non trovata" descrizione="La pagina cercata non esiste su questo sito.">
+
+  <section>
+    <div class="bar"><h2>Errore 404</h2><span class="hint">rotta non trovata</span></div>
+    <div class="panel">
+      <p style="margin:0 0 6px">
+        Questo indirizzo non corrisponde a nessuna pagina del sito. Forse il collegamento è
+        vecchio, oppure la voce è stata rinominata.
+      </p>
+      <div class="meta">Le quattro sezioni sono raggiungibili dalle schede qui sopra.</div>
+      <div class="btnrow">
+        <a class="btn" href="/">Background</a>
+        <a class="btn" href="/diario">Diario</a>
+        <a class="btn" href="/scheda">Scheda</a>
+        <a class="btn" href="/codex">Codex</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
