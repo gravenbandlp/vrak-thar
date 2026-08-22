@@ -129,7 +129,7 @@ per sette anni, e l'insegnamento si riduceva a una sola idea ripetuta in molti m
 
 Se n'è andata quando ha ritenuto concluso l'addestramento, senza cerimonia e senza dire dove. La tradizione Matukai prevede che finisca così. Da allora sono passati sette anni e Vrak non sa se sia viva o meno.
 
-Prima di andarsene Yrenial ha esaminato anche Sahra, che allora aveva quindici anni. Il giudizio della maestra fu che nella sorella la Forza scorreva ancora più potente forte che in lui, e pure con un margine ampio.
+Prima di andarsene Yrenial ha esaminato anche Sahra, che allora aveva quindici anni. Il giudizio della maestra fu che nella sorella la Forza scorreva ancora più potente che in lui, e pure con un margine ampio.
 
 Yrenial tuttavia si è rifiutata di addestrarla. Alla richiesta di una spiegazione ha risposto che c'era "qualcos'altro" e che non sapeva dargli un nome, e non è più tornata sull'argomento. Vrak non ha ottenuto altro e ha smesso di chiedere.
 
