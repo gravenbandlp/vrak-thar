@@ -9,14 +9,11 @@ chiesto niente oltre ai nomi, e nemmeno quelli con troppa insistenza. Io lavoro 
 turni in stiva a rizzare i container, i filtri da pulire a fine ciclo, la roba che nessuno vuole
 fare e che a me non pesa. Sahra viaggia da passeggera, che era il punto di tutto l'accordo.
 
-La prima cosa che ho imparato a bordo è che nessuno domanda niente a nessuno. L'equipaggio è di sei
-persone e un droide da carico che si pianta ogni tre sollevamenti; il meccanico gli parla come si
+L'equipaggio è di sei persone e un droide da carico che si pianta ogni tre sollevamenti; il meccanico gli parla come si
 parla a una vecchia bestia malandata. Poi ci siamo noi che paghiamo il posto. Una famiglia di stagionali,
 sei tra grandi e piccoli, diretti a un contratto di raccolta che hanno firmato senza vedere il
 campo. Due mercanti che passano le sere a litigare sui noli e la mattina dopo mangiano insieme.
-Un uomo che è sceso dalla cuccetta tre volte in una settimana e che ha pagato in contanti.
-
-Tutti sanno dove scendono. Noi due siamo gli unici a bordo senza una risposta. Quando me
+Un uomo che è sceso dalla cuccetta tre volte in una settimana e che ha pagato in contanti. Tutti sanno dove scendono. Noi due siamo gli unici a bordo senza una risposta. Quando me
 l'hanno chiesto ho detto che vediamo, e mi sono accorto che suonava male.
 
 Sahra non aveva mai visto lo spazio. Passa più tempo di quanto ammetta all'oblò di poppa, dove

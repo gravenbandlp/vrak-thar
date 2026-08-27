@@ -17,6 +17,8 @@ export const profilo = {
     { l: 'BAB', v: '+3' },
     { l: 'Velocità', v: '6 caselle' },
     { l: 'Taglia', v: 'Media' },
+    { l: 'Altezza', v: '1,85 m' },
+    { l: 'Peso', v: '90 kg' },
     { l: 'Lingue', v: 'Basic, Zabrak' },
   ],
   tratti: {
@@ -185,13 +187,18 @@ export const abilita = {
 
 export const inventario = {
   voci: [
+    { v: 'Crediti', n: '4.750' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
-    { v: 'Crediti', n: '3d4 × 100 iniziali — da tirare' },
-    { v: 'Slot libero', n: '______________', vuoto: true },
+    { v: 'Utility belt', n: '500 cr' },
+    { v: 'Medpac ×6', n: '600 cr — 100 cad.' },
+    { v: 'Medical kit', n: '600 cr' },
+    { v: 'Mantello ognitempo', n: '100 cr' },
+    { v: 'Maschera respiratoria + 4 filtri', n: '300 cr' },
+    { v: 'Aquata breather', n: '350 cr' },
   ],
   nota:
-    'La lama che porta è un assemblaggio di componenti comprati al mercato: funziona, ma non è costruita secondo la procedura e non è sintonizzata, quindi non dà nessun bonus.',
+    '',
 };
 
 export const progressione = [

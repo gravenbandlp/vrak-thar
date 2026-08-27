@@ -6,4 +6,5 @@ ordine: 160
 ---
 Umana, Matukai itinerante, mio maestro per sette anni. Arrivata a Odarn come manovale, ripartita
 senza cerimonia il giorno in cui ha deciso che avevo finito. La tradizione dice che si fa così.
-Non ha lasciato una rotta, un nome di contatto, niente. Non so nemmeno se sia viva.
+Non ha lasciato una rotta, un nome di contatto, niente. Non so nemmeno se sia viva. Sulla partenza non le devo niente: era la regola del mestiere e la conoscevo dal primo anno.
+Su **Sahra** invece il conto è aperto.
