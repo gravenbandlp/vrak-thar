@@ -187,7 +187,7 @@ export const abilita = {
 
 export const inventario = {
   voci: [
-    { v: 'Crediti', n: '4.750' },
+    { v: 'Crediti', n: '4.560' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
@@ -197,6 +197,16 @@ export const inventario = {
     { v: 'Maschera respiratoria + 4 filtri', n: '300 cr' },
     { v: 'Aquata breather', n: '350 cr' },
   ],
+  nota:
+    '',
+};
+
+/* Punti esperienza: soglie standard di Saga Edition — 1.000 / 3.000 / 6.000 / 10.000 */
+export const esperienza = {
+  livelloAttuale: 3,
+  livelloProssimo: 4,
+  attuali: 4000,
+  soglia: 6000,
   nota:
     '',
 };

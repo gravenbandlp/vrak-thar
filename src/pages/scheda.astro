@@ -13,10 +13,15 @@ import {
   poteri,
   abilita,
   inventario,
+  esperienza,
   progressione,
 } from '../data/scheda.ts';
 
 const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
+/* separatore delle migliaia all'italiana, senza dipendere dall'ICU di Node */
+const mille = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const pePerc = Math.min(100, Math.round((esperienza.attuali / esperienza.soglia) * 100));
+const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
 ---
 
 <Layout titolo="Scheda" descrizione="Scheda di Vrak Thar per Star Wars Saga Edition, con condition track e risorse interattive.">
@@ -231,6 +236,21 @@ const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
 
       <div class="panel">
         <div class="meta" style="margin-bottom:10px"><span class="lbl">Prossimo livello</span></div>
+
+        <div class="vital">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F2C14E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6"/><path d="M5 13l7-7 7 7"/></svg></div>
+          <div style="flex:1">
+            <div class="cap">Punti esperienza · verso il livello {esperienza.livelloProssimo}</div>
+            <div><span class="big">{mille(esperienza.attuali)}</span> <span style="color:var(--text-dim)">/ {mille(esperienza.soglia)}</span></div>
+          </div>
+        </div>
+        <div class="bar-track">
+          <i style={`width:${pePerc}%;background:linear-gradient(90deg,#B4801C,#F2C14E);box-shadow:0 0 10px rgba(242,193,78,.45)`}></i>
+        </div>
+        <div class="meta" style="margin:10px 0 14px">
+          <Fragment set:html={esperienza.nota} />
+        </div>
+
         {progressione.map((v) => (
           <div class="entry">
             <div class="t">{v.t}</div>
