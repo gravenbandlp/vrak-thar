@@ -1,7 +1,6 @@
 ---
 titolo: Impianti Ziigar
 categoria: concetti
-verificata: true
 ordine: 200
 ---
 Innesti neurali che imitano quello che fa un sensibile alla Forza: riflessi, forza, percezione.. Costano quanto Odarn produce in un anno, quindi finiscono addosso a gente che

@@ -1,7 +1,6 @@
 ---
 titolo: Yrenial Vayn
 categoria: persone
-verificata: true
 ordine: 160
 ---
 Umana, Matukai itinerante, mio maestro per sette anni. Arrivata a Odarn come manovale, ripartita

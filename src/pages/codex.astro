@@ -50,10 +50,7 @@ const categorie = [...new Set(voci.map((v) => v.data.categoria))].sort(
     <div class="cx-grid" id="cxGrid">
       {rese.map(({ data, Content }) => (
         <article class="cx" data-cat={data.categoria}>
-          <div class="cat">
-            {ETICHETTE[data.categoria].card}
-            {!data.verificata && <span style="color:var(--text-dim)"> · da verificare</span>}
-          </div>
+          <div class="cat">{ETICHETTE[data.categoria].card}</div>
           <h3>{data.titolo}</h3>
           <Content />
         </article>

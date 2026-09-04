@@ -1,7 +1,6 @@
 ---
 titolo: Sahra Thar
 categoria: persone
-verificata: true
 ordine: 170
 ---
 Mia sorella, nove anni meno di me. Ha respirato la stessa polvere e non si è ammalata, come me.

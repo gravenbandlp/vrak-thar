@@ -1,7 +1,6 @@
 ---
 titolo: La Repubblica
 categoria: fazioni
-verificata: true
 ordine: 40
 ---
 Ha vinto le guerre e adesso non sa cosa farsene della pace. Cinquant'anni a rimettere insieme

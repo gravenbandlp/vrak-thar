@@ -1,7 +1,6 @@
 ---
 titolo: Wan-shen
 categoria: concetti
-verificata: true
 ordine: 235
 ---
 L'arma dei **Matukai**: un'asta con una lama in punta, che il discepolo si costruisce quando viene

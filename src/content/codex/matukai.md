@@ -1,7 +1,6 @@
 ---
 titolo: Matukai
 categoria: tradizioni
-verificata: true
 ordine: 10
 ---
 La Forza si canalizza attraverso il corpo allenato: il fisico è il condotto, non

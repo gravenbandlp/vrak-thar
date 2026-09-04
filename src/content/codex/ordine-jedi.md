@@ -1,7 +1,6 @@
 ---
 titolo: Ordine Jedi
 categoria: fazioni
-verificata: true
 ordine: 50
 ---
 Esce dalle guerre con metà dei maestri morti e con il credito di aver salvato la galassia. Il

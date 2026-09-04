@@ -1,7 +1,6 @@
 ---
 titolo: Mandaloriani
 categoria: fazioni
-verificata: true
 ordine: 80
 ---
 Sconfitti, senza un Mandalore e senza un centro. Restano le tribù, che si vendono a chi paga:

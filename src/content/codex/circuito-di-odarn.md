@@ -1,7 +1,6 @@
 ---
 titolo: Il circuito di Odarn
 categoria: luoghi
-verificata: true
 ordine: 140
 ---
 Tre serate a settimana in un capannone di frantumazione dismesso. Armi smussate o niente armi,

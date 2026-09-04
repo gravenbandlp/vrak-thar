@@ -20,8 +20,6 @@ const codex = defineCollection({
   schema: z.object({
     titolo: z.string(),
     categoria: z.enum(['tradizioni', 'fazioni', 'luoghi', 'persone', 'concetti']),
-    /* false = voce basata su dicerie, da confermare in gioco */
-    verificata: z.boolean().default(true),
     ordine: z.number().default(100),
   }),
 });

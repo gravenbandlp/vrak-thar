@@ -1,7 +1,6 @@
 ---
 titolo: Il Triumvirato
 categoria: concetti
-verificata: true
 ordine: 190
 ---
 L'ultima cosa che i Sith sono riusciti a mettere in piedi, ed è quella che li ha finiti. Ne è

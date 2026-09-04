@@ -1,7 +1,6 @@
 ---
 titolo: Jal Shey
 categoria: tradizioni
-verificata: true
 ordine: 20
 ---
 Studiano la Forza come si studia un fenomeno naturale: logica, niente devozione, niente profezie.

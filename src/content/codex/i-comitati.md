@@ -1,7 +1,6 @@
 ---
 titolo: I comitati
 categoria: fazioni
-verificata: true
 ordine: 100
 ---
 Movimenti civili nati nei mondi interni. Chiedono registri pubblici dei sensibili alla Forza,

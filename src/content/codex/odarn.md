@@ -1,7 +1,6 @@
 ---
 titolo: Odarn
 categoria: luoghi
-verificata: true
 ordine: 130
 ---
 Casa mia, se la parola vuol dire il posto dove sei nato e non quello dove torni. Mondo minerario

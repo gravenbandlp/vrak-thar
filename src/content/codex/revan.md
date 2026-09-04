@@ -1,7 +1,6 @@
 ---
 titolo: Revan
 categoria: persone
-verificata: true
 ordine: 180
 ---
 Il nome che salta fuori ogni volta che qualcuno vuole spiegare in una frase perché la galassia è

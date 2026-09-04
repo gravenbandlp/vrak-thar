@@ -1,7 +1,6 @@
 ---
 titolo: I Sith
 categoria: fazioni
-verificata: true
 ordine: 90
 ---
 Spariti. Il Triumvirato è caduto cinquant'anni fa e da allora non c'è più un impero, né una

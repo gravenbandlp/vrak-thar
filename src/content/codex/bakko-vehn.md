@@ -1,7 +1,6 @@
 ---
 titolo: Bakko Vehn
 categoria: persone
-verificata: true
 ordine: 174
 ---
 Nikto, del circuito. **Undici incontri, cinque suoi**: l'unico che mi abbia battuto più di una

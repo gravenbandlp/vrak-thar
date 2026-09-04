@@ -1,7 +1,6 @@
 ---
 titolo: Menti alveare
 categoria: concetti
-verificata: true
 ordine: 220
 ---
 Droidi che non pensano uno per uno: una macchina sola li controlla tutti e loro agiscono da braccia.

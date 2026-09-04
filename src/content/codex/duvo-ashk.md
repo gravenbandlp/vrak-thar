@@ -1,7 +1,6 @@
 ---
 titolo: Duvo Ashk
 categoria: persone
-verificata: true
 ordine: 172
 ---
 Caposquadra umano, sessant'anni, **gesso** a uno stadio avanzato. Ha insegnato il mestiere a mio

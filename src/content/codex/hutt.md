@@ -1,7 +1,6 @@
 ---
 titolo: Gli Hutt
 categoria: fazioni
-verificata: true
 ordine: 70
 ---
 Non hanno vinto una sola battaglia e sono usciti dalle guerre più grandi di prima. Mentre
