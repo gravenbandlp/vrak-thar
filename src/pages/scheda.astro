@@ -15,6 +15,7 @@ import {
   inventario,
   esperienza,
   progressione,
+  statoIniziale,
 } from '../data/scheda.ts';
 
 const segno = (n: number) => (n >= 0 ? `+${n}` : String(n));
@@ -90,7 +91,7 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
           <button class="btn" data-hp="-10" type="button">−10</button>
           <button class="btn" data-hp="1" type="button">+1</button>
           <button class="btn" data-hp="5" type="button">+5</button>
-          <button class="btn wind" id="windBtn" type="button">Second Wind +{risorse.secondWind}</button>
+          <button class="btn wind" id="windBtn" aria-pressed="false" type="button">Second Wind +{risorse.secondWind}</button>
         </div>
         <div class="meta" style="margin-top:12px" set:html={risorse.hpNota} />
       </div>
@@ -232,6 +233,14 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
           </div>
         ))}
         <div class="meta" style="margin-top:14px" set:html={inventario.nota} />
+
+        <div class="meta" style="margin:18px 0 10px"><span class="lbl">Loot</span></div>
+        {inventario.loot.map((i, idx) => (
+          <div class="lozenge" style={idx < inventario.loot.length - 1 ? 'margin-bottom:8px' : undefined}>
+            <span>{i.v}</span>
+            <span style="color:var(--text-dim);font-size:var(--fs-300)">{i.n}</span>
+          </div>
+        ))}
       </div>
 
       <div class="panel">
@@ -264,13 +273,38 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
 
   <div class="foot" style="margin-top:26px;text-align:center">
     <button class="btn" id="resetAll" type="button">Ripristina la scheda</button>
+    <div class="meta" style="margin-top:10px">PF, condizione, Second Wind, Punti Forza e poteri si salvano da soli in questo browser a ogni modifica.</div>
   </div>
 
 </Layout>
 
-<script define:vars={{ HP_MAX: risorse.hpMax, FP_MAX: risorse.fpMax, WIND: risorse.secondWind }}>
+<script define:vars={{ HP_MAX: risorse.hpMax, FP_MAX: risorse.fpMax, WIND: risorse.secondWind, INIZIO: statoIniziale }}>
 (function(){
-  var state = { pen: 0, hp: HP_MAX };
+  /* ---- salvataggio locale ----
+     La firma lega il salvataggio ai dati di scheda.ts: se cambiano lo stato
+     iniziale o i massimi (nuovo livello, fine sessione), il vecchio salvataggio
+     viene scartato e si riparte dai valori del file. */
+  var CHIAVE = 'vrak-scheda';
+  var FIRMA = JSON.stringify([INIZIO, HP_MAX, FP_MAX, WIND]);
+  var salvato = null;
+  try {
+    var grezzo = JSON.parse(localStorage.getItem(CHIAVE));
+    if (grezzo && grezzo.firma === FIRMA) salvato = grezzo;
+  } catch (e) {}
+
+  var state = salvato
+    ? { pen: salvato.pen, hp: salvato.hp, wind: salvato.wind }
+    : { pen: INIZIO.condizione, hp: INIZIO.hp, wind: INIZIO.secondWindUsato };
+
+  function salva(){
+    try {
+      localStorage.setItem(CHIAVE, JSON.stringify({
+        firma: FIRMA, pen: state.pen, hp: state.hp, wind: state.wind,
+        fp: [].map.call(document.querySelectorAll('.pip'), function(p){ return p.getAttribute('aria-pressed') === 'true'; }),
+        poteri: [].map.call(document.querySelectorAll('.power'), function(p){ return p.getAttribute('aria-pressed') === 'true'; })
+      }));
+    } catch (e) {}
+  }
 
   /* ---- condition track ---- */
   var stepBtns = [].slice.call(document.querySelectorAll('.step'));
@@ -294,7 +328,7 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
   stepBtns.forEach(function(b){
     b.addEventListener('click', function(){
       state.pen = parseInt(b.getAttribute('data-pen'), 10);
-      renderCond();
+      renderCond(); salva();
     });
   });
 
@@ -309,9 +343,22 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
       : (state.hp <= HP_MAX/2 ? 'linear-gradient(90deg,#B4801C,#F2C14E)' : 'linear-gradient(90deg,#2E9BD4,#7FE3A0)');
   }
   [].forEach.call(document.querySelectorAll('[data-hp]'), function(b){
-    b.addEventListener('click', function(){ state.hp += parseInt(b.getAttribute('data-hp'),10); renderHP(); });
+    b.addEventListener('click', function(){ state.hp += parseInt(b.getAttribute('data-hp'),10); renderHP(); salva(); });
   });
-  document.getElementById('windBtn').addEventListener('click', function(){ state.hp += WIND; renderHP(); });
+
+  /* ---- second wind: una volta al giorno ----
+     Da usato, un clic lo riarma senza toccare i PF (utile se l'hai premuto per sbaglio). */
+  var windBtn = document.getElementById('windBtn');
+  function renderWind(){
+    windBtn.setAttribute('aria-pressed', String(state.wind));
+    windBtn.textContent = state.wind ? 'Second Wind usato' : 'Second Wind +' + WIND;
+    windBtn.title = state.wind ? 'Clicca per renderlo di nuovo disponibile' : '';
+  }
+  windBtn.addEventListener('click', function(){
+    if (!state.wind) { state.hp += WIND; renderHP(); }
+    state.wind = !state.wind;
+    renderWind(); salva();
+  });
 
   /* ---- punti forza ---- */
   var fpWrap = document.getElementById('fpPips'), fpCount = document.getElementById('fpCount');
@@ -323,31 +370,33 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
     var p = document.createElement('button');
     p.type = 'button';
     p.className = 'pip';
-    p.setAttribute('aria-pressed','false');
+    p.setAttribute('aria-pressed', String(!!(salvato && salvato.fp && salvato.fp[i])));
     p.setAttribute('aria-label','Punto Forza ' + (i+1));
     p.addEventListener('click', function(){
       this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
-      renderFP();
+      renderFP(); salva();
     });
     fpWrap.appendChild(p);
   }
 
   /* ---- poteri ---- */
-  [].forEach.call(document.querySelectorAll('.power'), function(b){
+  [].forEach.call(document.querySelectorAll('.power'), function(b, i){
+    if (salvato && salvato.poteri && salvato.poteri[i]) b.setAttribute('aria-pressed', 'true');
     b.addEventListener('click', function(){
       b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      salva();
     });
   });
 
-  /* ---- reset ---- */
+  /* ---- reset: tutto al massimo, come dopo un riposo completo ---- */
   document.getElementById('resetAll').addEventListener('click', function(){
-    state.pen = 0; state.hp = HP_MAX;
-    renderCond(); renderHP();
+    state.pen = 0; state.hp = HP_MAX; state.wind = false;
+    renderCond(); renderHP(); renderWind();
     [].forEach.call(document.querySelectorAll('.pip'), function(p){ p.setAttribute('aria-pressed','false'); });
     [].forEach.call(document.querySelectorAll('.power'), function(p){ p.setAttribute('aria-pressed','false'); });
-    renderFP();
+    renderFP(); salva();
   });
 
-  renderCond(); renderHP(); renderFP();
+  renderCond(); renderHP(); renderWind(); renderFP();
 })();
 </script>

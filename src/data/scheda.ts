@@ -7,14 +7,14 @@
 export const profilo = {
   nome: 'Vrak',
   cognome: 'Thar',
-  sottotitolo: 'Zabrak · Tradizione Matukai · Jedi 3',
+  sottotitolo: 'Zabrak · Tradizione Matukai · Jedi 4',
   ritratto: '/vrak-thar.jpg',
   ritrattoAlt:
     'Ritratto di Vrak Thar, guerriero Zabrak dal cranio rasato con corna e tatuaggi tribali neri sul volto',
   ritrattoAltIntero:
     'Vrak Thar a figura intera: Zabrak muscoloso in tunica di stoffa grezza incrociata sul petto, avambracci fasciati, spada laser accesa nella mano destra',
   chip: [
-    { l: 'BAB', v: '+3' },
+    { l: 'BAB', v: '+4' },
     { l: 'Velocità', v: '6 caselle' },
     { l: 'Taglia', v: 'Media' },
     { l: 'Altezza', v: '1,85 m' },
@@ -29,9 +29,9 @@ export const profilo = {
 };
 
 export const caratteristiche = [
-  { l: 'For', s: 15, m: '+2' },
+  { l: 'For', s: 16, m: '+3' },
   { l: 'Des', s: 10, m: '+0' },
-  { l: 'Cos', s: 15, m: '+2' },
+  { l: 'Cos', s: 16, m: '+3' },
   { l: 'Int', s: 10, m: '+0' },
   { l: 'Sag', s: 12, m: '+1' },
   { l: 'Car', s: 14, m: '+2' },
@@ -39,23 +39,23 @@ export const caratteristiche = [
 
 /* base = valore a condizione normale: il condition track lo ricalcola da solo */
 export const difese = [
-  { l: 'Riflessi', base: 15, soglia: false },
-  { l: 'Tempra', base: 17, soglia: false },
-  { l: 'Volontà', base: 15, soglia: false },
-  { l: 'Soglia danno', base: 17, soglia: true },
+  { l: 'Riflessi', base: 17, soglia: false },
+  { l: 'Tempra', base: 19, soglia: false },
+  { l: 'Volontà', base: 17, soglia: false },
+  { l: 'Soglia danno', base: 19, soglia: true },
 ];
 
 export const risorse = {
-  hpMax: 47,
-  fpMax: 6,
-  secondWind: 15,
+  hpMax: 57,
+  fpMax: 7,
+  secondWind: 16,
   hpNota:
-    'Second Wind recupera <b>15 PF</b>: un quarto dei PF totali o il punteggio di Costituzione, il maggiore dei due — qui vince Costituzione. Azione veloce, <b>1 volta al giorno</b> e mai più di una volta nello stesso incontro.',
+    'Second Wind recupera <b>16 PF</b>: un quarto dei PF totali (14) o il punteggio di Costituzione (16), il maggiore dei due — qui vince Costituzione. Azione veloce, <b>1 volta al giorno</b> e mai più di una volta nello stesso incontro.',
   fpTitolo: 'Punti Forza — 5 + metà livello',
   fpNota:
     'Spendine uno per aggiungere <b>1d6</b> a una prova, o per attivare capacità specifiche. Si ricaricano interamente ad ogni passaggio di livello: i residui vanno persi.',
   formule:
-    'RIF 10 +3 livello +0 Des +1 classe +1 specie<br>TEM 10 +3 livello +2 Cos +1 classe +1 specie<br>VOL 10 +3 livello +1 Sag +1 classe +1 specie',
+    'RIF 10 +4 livello +0 Des +1 classe +1 specie +1 schivata<br>TEM 10 +4 livello +3 Cos +1 classe +1 specie<br>VOL 10 +4 livello +1 Sag +1 classe +1 specie',
 };
 
 export const conditionTrack = [
@@ -75,31 +75,37 @@ export const attacchi = {
   righe: [
     {
       modo: 'Una mano',
-      colpire: 6,
-      danni: '2d8+3',
+      colpire: 8,
+      danni: '2d8+5',
       note: 'Mano libera per Move Light Object o per una presa',
     },
     {
       modo: 'Due mani',
-      colpire: 6,
-      danni: '2d8+5',
+      colpire: 8,
+      danni: '2d8+8',
       note: 'Bonus di Forza raddoppiato — il tuo default',
     },
     {
-      modo: 'Due mani + Power Attack (−3)',
-      colpire: 3,
-      danni: '2d8+11',
+      modo: 'Due mani + Power Attack (−4)',
+      colpire: 4,
+      danni: '2d8+16',
       note: 'A due mani il malus si converte in danno raddoppiato',
     },
     {
       modo: 'Due mani + Battle Strike (CD 15)',
-      colpire: 7,
-      danni: '2d8+1d6+5',
+      colpire: 9,
+      danni: '2d8+1d6+8',
       note: 'Azione veloce prima dell\'attacco',
+    },
+    {
+      modo: 'Senz\'armi',
+      colpire: 7,
+      danni: '1d6+5',
+      note: 'Martial Arts I porta il dado da 1d4 a 1d6; niente Weapon Focus',
     },
   ],
   nota:
-    '<span class="lbl">Danno in mischia</span> dado dell\'arma + metà livello eroico (+1) + mod. Forza, raddoppiato impugnando a due mani.<br><span class="lbl">Turno tipo</span> Battle Strike come azione veloce, poi attacco a due mani con Power Attack calibrato sul bersaglio.',
+    '<span class="lbl">Danno in mischia</span> dado dell\'arma + metà livello eroico (+2) + mod. Forza, raddoppiato impugnando a due mani.<br><span class="lbl">Turno tipo</span> Battle Strike come azione veloce, poi attacco a due mani con Power Attack calibrato sul bersaglio.',
 };
 
 export const attitudini = {
@@ -146,6 +152,11 @@ export const talenti = [
     m: 'Liv. 3 · talento generale',
     p: 'Prima del tiro sottrai fino al tuo BAB dagli attacchi in mischia e aggiungi lo stesso numero ai danni, <b>raddoppiato</b> impugnando a due mani. Vale fino all\'inizio del tuo turno successivo.',
   },
+  {
+    t: 'Martial Arts I',
+    m: 'Liv. 4 · talento bonus Jedi',
+    p: '+1 di schivata alla Difesa Riflessi, già incluso nei valori qui sopra: lo perdi quando sei colto alla sprovvista. Il danno senz\'armi sale di un passo, da 1d4 a <b>1d6</b>.',
+  },
 ];
 
 export const poteri = {
@@ -167,27 +178,27 @@ export const poteri = {
 export const abilita = {
   colonne: [
     [
-      { k: 'Usare la Forza', sub: 'Car · addestrata', base: 8, addestrata: true },
-      { k: 'Iniziativa', sub: 'Des · addestrata', base: 6, addestrata: true },
-      { k: 'Resistenza', sub: 'Cos', base: 3, addestrata: false },
-      { k: 'Saltare', sub: 'For', base: 3, addestrata: false },
+      { k: 'Usare la Forza', sub: 'Car · addestrata', base: 9, addestrata: true },
+      { k: 'Iniziativa', sub: 'Des · addestrata', base: 7, addestrata: true },
+      { k: 'Resistenza', sub: 'Cos', base: 5, addestrata: false },
+      { k: 'Saltare', sub: 'For', base: 5, addestrata: false },
     ],
     [
-      { k: 'Scalare', sub: 'For', base: 3, addestrata: false },
-      { k: 'Persuasione', sub: 'Car', base: 3, addestrata: false },
-      { k: 'Percezione', sub: 'Sag', base: 2, addestrata: false },
-      { k: 'Acrobazia', sub: 'Des', base: 1, addestrata: false },
+      { k: 'Scalare', sub: 'For', base: 5, addestrata: false },
+      { k: 'Persuasione', sub: 'Car', base: 4, addestrata: false },
+      { k: 'Percezione', sub: 'Sag', base: 3, addestrata: false },
+      { k: 'Acrobazia', sub: 'Des', base: 2, addestrata: false },
     ],
   ],
   nota:
-    'Il Jedi ottiene 2 + mod. Intelligenza abilità addestrate: con INT 10 solo due. Usare la Forza è <b>addestrata obbligatoria</b>, perché quasi tutte le sue applicazioni non funzionano senza. Percezione addestrata varrebbe +7 e avrebbe ottima sinergia con Heightened Awareness: candidata naturale per Skill Training a un livello futuro.',
+    'Il Jedi ottiene 2 + mod. Intelligenza abilità addestrate: con INT 10 solo due. Usare la Forza è <b>addestrata obbligatoria</b>, perché quasi tutte le sue applicazioni non funzionano senza. Percezione addestrata varrebbe +8 e avrebbe ottima sinergia con Heightened Awareness: candidata naturale per Skill Training a un livello futuro.',
   alert:
     '<b>Regola della casa — Abilità Focalizzata</b><br>Su <b>Usare la Forza</b> il talento non dà +5 secco ma un bonus che scala col livello: <b>+1</b> dal liv. 1 · <b>+2</b> dal liv. 4 · <b>+3</b> dal liv. 8 · <b>+4</b> dal liv. 12 · <b>+5</b> dal liv. 16 · <b>+6</b> al liv. 20. Su tutte le altre abilità resta il +5 fisso da manuale.',
 };
 
 export const inventario = {
   voci: [
-    { v: 'Crediti', n: '4.560' },
+    { v: 'Crediti', n: '4.870' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
@@ -197,34 +208,48 @@ export const inventario = {
     { v: 'Maschera respiratoria + 4 filtri', n: '300 cr' },
     { v: 'Aquata breather', n: '350 cr' },
   ],
+  loot: [
+    { v: 'Vibropicca ×2', n: '' },
+    { v: 'Pistola blaster ×2', n: '' },
+    { v: 'Giacca rinforzata ×2', n: '' },
+  ],
   nota:
     '',
 };
 
 /* Punti esperienza: soglie standard di Saga Edition — 1.000 / 3.000 / 6.000 / 10.000 */
 export const esperienza = {
-  livelloAttuale: 3,
-  livelloProssimo: 4,
-  attuali: 4000,
-  soglia: 6000,
+  livelloAttuale: 4,
+  livelloProssimo: 5,
+  attuali: 6000,
+  soglia: 10000,
   nota:
     '',
 };
 
 export const progressione = [
   {
-    t: 'Aumento di caratteristica',
-    m: 'Liv. 4',
-    p: '+1 a due punteggi. Metti <b>FOR 15→16</b> e <b>COS 15→16</b>: entrambi superano una soglia e diventano +3. Guadagni +1 al colpire, +2 ai danni a due mani, +1 PF per livello, +1 Tempra e +1 Soglia di Danno.',
+    t: 'Talento Jedi',
+    m: 'Liv. 5',
+    p: 'Dall\'albero Lightsaber Combat: <b>Weapon Specialization (spade laser)</b>, +2 ai danni, che richiede Weapon Focus (già preso), oppure <b>Lightsaber Defense</b>, +1 di deviazione ai Riflessi con la spada accesa, prendibile fino a tre volte. Il BAB sale a +5.',
   },
   {
-    t: 'Talento bonus Jedi',
-    m: 'Liv. 4',
-    p: 'Candidati: <b>Rapid Strike</b> (−2 al colpire per +1 dado di danno), <b>Martial Arts I</b> (+1 Riflessi e danno senz\'armi migliorato, molto Matukai), <b>Skill Training</b> per Percezione.',
+    t: 'Talento generale + talento bonus Jedi',
+    m: 'Liv. 6',
+    p: 'Per il generale, <b>Skill Training</b> su Percezione resta il candidato naturale: varrebbe +9, con ottima sinergia con Heightened Awareness. Per il bonus Jedi, <b>Martial Arts II</b> per proseguire sulla strada Matukai, oppure <b>Rapid Strike</b> (−2 al colpire per +1 dado di danno).',
   },
   {
     t: 'Abilità Focalizzata — rimandare',
     m: 'Non prima del liv. 8',
-    p: 'Con la regola della casa il talento su Usare la Forza vale <b>+1</b> ora e <b>+2</b> al liv. 4: un talento speso per quasi nulla. Diventa un investimento sensato dal <b>liv. 8</b> in su (+3), e nel frattempo conviene spingere sull\'accuratezza in mischia e sulla Difesa Riflessi.',
+    p: 'Con la regola della casa il talento su Usare la Forza adesso vale <b>+2</b>: un talento speso per poco. Diventa un investimento sensato dal <b>liv. 8</b> in su (+3), e nel frattempo conviene spingere sull\'accuratezza in mischia e sulla Difesa Riflessi.',
   },
 ];
+
+/* Stato a fine sessione: è il punto di partenza della scheda interattiva.
+   Il browser salva da solo ogni modifica fatta sulla pagina; se cambi questi
+   valori, al caricamento successivo prevalgono sul salvataggio locale. */
+export const statoIniziale = {
+  hp: 29,
+  condizione: 1, // penalità del condition track: 0, 1, 2, 5, 10 oppure 99 (KO)
+  secondWindUsato: true,
+};
