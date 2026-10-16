@@ -5,7 +5,4 @@ ordine: 110
 ---
 Nei ranghi bassi soprattutto gamorreani. In cima una coppia che qui trovano insolita: **Qasshi
 Kerrst**, cathar, ex cacciatore di taglie, e la sua guardia del corpo, un mantellian savrip di nome
-**Groshko Nuur**.
-
-Qasshi Kerrst sta facendo fuori uno dopo l'altro dei pezzi grossi, gente ricca e potente, e i suoi
-se ne vantano in giro. In città ne hanno paura tutti.
+**Groshko Nuur**. Qasshi Kerrst sta facendo fuori uno dopo l'altro dei pezzi grossi, gente ricca e potente.
