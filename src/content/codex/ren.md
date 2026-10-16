@@ -9,3 +9,5 @@ in contanti e passa il tempo a verificare che una certa tasca sia ancora al suo 
 quasi tutta. Gli ho detto che per essere sopravvissuto doveva essere uno in gamba e si è incupito, quindi
 c'è dell'altro. Sahra si fida di lui, quindi per ora ci muoviamo insieme.
 
+Al devaroniano ha detto che lo manda **Sella Ven**, una miraluka, e che ha un oggetto che forse lui sa
+analizzare. Quando ne hanno parlato mi sono allontanato.
