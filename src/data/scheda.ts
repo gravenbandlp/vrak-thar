@@ -206,7 +206,7 @@ export const inventario = {
     { v: 'Granata a frammentazione ×5', n: '125 cr — 25 cad.' },
     { v: 'Medical kit', n: '600 cr' },
     { v: 'Mantello ognitempo', n: '100 cr' },
-    { v: 'Camouflage poncho', n: '' },
+    { v: 'Camouflage poncho', n: '125 cr' },
     { v: 'Maschera respiratoria + 4 filtri', n: '300 cr' },
     { v: 'Aquata breather', n: '350 cr' },
   ],
