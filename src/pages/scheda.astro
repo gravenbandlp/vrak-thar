@@ -241,6 +241,9 @@ const peMancanti = Math.max(0, esperienza.soglia - esperienza.attuali);
             <span style="color:var(--text-dim);font-size:var(--fs-300)">{i.n}</span>
           </div>
         ))}
+        {inventario.loot.length === 0 && (
+          <div class="lozenge"><span style="color:var(--text-dim)">Nessun oggetto</span></div>
+        )}
       </div>
 
       <div class="panel">

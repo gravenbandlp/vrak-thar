@@ -198,7 +198,7 @@ export const abilita = {
 
 export const inventario = {
   voci: [
-    { v: 'Crediti', n: '5.910' },
+    { v: 'Crediti', n: '6.785' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
@@ -206,18 +206,13 @@ export const inventario = {
     { v: 'Granata a frammentazione ×5', n: '125 cr — 25 cad.' },
     { v: 'Medical kit', n: '600 cr' },
     { v: 'Mantello ognitempo', n: '100 cr' },
+    { v: 'Camouflage poncho', n: '' },
     { v: 'Maschera respiratoria + 4 filtri', n: '300 cr' },
     { v: 'Aquata breather', n: '350 cr' },
   ],
-  loot: [
-    { v: 'Vibropicca ×8', n: '' },
-    { v: 'Pistola blaster ×13', n: '' },
-    { v: 'Pistola blaster pesante ×2', n: '' },
-    { v: 'Bastone stordente ×3', n: '' },
-    { v: 'Giacca rinforzata ×4', n: '' },
-  ],
+  loot: [] as { v: string; n: string }[],
   nota:
-    '<b>Da fare:</b> acquistare il camouflage poncho.',
+    '',
 };
 
 /* Punti esperienza: soglie standard di Saga Edition — 1.000 / 3.000 / 6.000 / 10.000 */
