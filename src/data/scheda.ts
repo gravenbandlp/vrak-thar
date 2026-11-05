@@ -198,7 +198,7 @@ export const abilita = {
 
 export const inventario = {
   voci: [
-    { v: 'Crediti', n: '5.950' },
+    { v: 'Crediti', n: '5.930' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
