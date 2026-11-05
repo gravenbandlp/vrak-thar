@@ -198,7 +198,7 @@ export const abilita = {
 
 export const inventario = {
   voci: [
-    { v: 'Crediti', n: '5.820' },
+    { v: 'Crediti', n: '5.870' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
@@ -211,10 +211,10 @@ export const inventario = {
   ],
   loot: [
     { v: 'Vibropicca ×8', n: '' },
-    { v: 'Pistola blaster ×11', n: '' },
+    { v: 'Pistola blaster ×13', n: '' },
     { v: 'Pistola blaster pesante ×2', n: '' },
     { v: 'Bastone stordente ×3', n: '' },
-    { v: 'Giacca rinforzata ×2', n: '' },
+    { v: 'Giacca rinforzata ×4', n: '' },
   ],
   nota:
     '<b>Da fare:</b> acquistare il camouflage poncho.',
