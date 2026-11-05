@@ -198,19 +198,22 @@ export const abilita = {
 
 export const inventario = {
   voci: [
-    { v: 'Crediti', n: '4.870' },
+    { v: 'Crediti', n: '5.820' },
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
-    { v: 'Medpac ×6', n: '600 cr — 100 cad.' },
+    { v: 'Medpac ×4', n: '400 cr — 100 cad.' },
+    { v: 'Granata a frammentazione ×5', n: '125 cr — 25 cad.' },
     { v: 'Medical kit', n: '600 cr' },
     { v: 'Mantello ognitempo', n: '100 cr' },
     { v: 'Maschera respiratoria + 4 filtri', n: '300 cr' },
     { v: 'Aquata breather', n: '350 cr' },
   ],
   loot: [
-    { v: 'Vibropicca ×2', n: '' },
-    { v: 'Pistola blaster ×2', n: '' },
+    { v: 'Vibropicca ×8', n: '' },
+    { v: 'Pistola blaster ×11', n: '' },
+    { v: 'Pistola blaster pesante ×2', n: '' },
+    { v: 'Bastone stordente ×3', n: '' },
     { v: 'Giacca rinforzata ×2', n: '' },
   ],
   nota:
@@ -221,7 +224,7 @@ export const inventario = {
 export const esperienza = {
   livelloAttuale: 4,
   livelloProssimo: 5,
-  attuali: 6000,
+  attuali: 7000,
   soglia: 10000,
   nota:
     '',
