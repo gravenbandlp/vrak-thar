@@ -217,7 +217,7 @@ export const inventario = {
     { v: 'Giacca rinforzata ×2', n: '' },
   ],
   nota:
-    '',
+    '<b>Da fare:</b> acquistare il camouflage poncho.',
 };
 
 /* Punti esperienza: soglie standard di Saga Edition — 1.000 / 3.000 / 6.000 / 10.000 */
