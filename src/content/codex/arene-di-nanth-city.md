@@ -10,3 +10,12 @@ sono mortali sulla carta ma si arriva a ferite serie, e ogni tanto qualcuno ci l
 riconoscere quando una cifra copre soltanto la brutta serata. Alla fine ho scelto quella degli incontri non mortali, che è anche la più rinomata: ci viene a
 combattere un po' di tutto, ex mercenari, ex soldati e gente come me. Il campione è **Yastur**, un gen'dai, e lo è da sempre. Dicono che i
 gen'dai vivano molto più a lungo di noi, che siano fortissimi e che combattano come pochi altri. Ho vinto i primi due turni.
+
+
+Prima di arrivare a lui ci sono altri quattro campioni. In tutto sono cinque, dal più basso al più alto:
+
+1. **Zail**, ubese
+2. **Hagri**, anzati
+3. **Nook**, una gand
+4. **Chund**, umano
+5. **Yastur**, gen'dai
