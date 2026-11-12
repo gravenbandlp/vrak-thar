@@ -24,7 +24,7 @@ alle idee di prima potrebbe esserci ancora, ma se ne guarda bene dal dirlo.
 In queste zone comanda il capitano **Chuddel Korg**. Guida le squadracce ed è un macellaio, senza
 neanche un motivo dietro quello che fa. Più lontano c'è una roccaforte centrale, molto ben difesa.
 Qui vicino invece c'è un altro punto chiave del loro dominio, tenuto da un luogotenente di nome
-**Geode**: uno che ha i modi della vecchia guardia ma ha sposato la causa di Bagron, quindi niente
+**Jyod**: uno che ha i modi della vecchia guardia ma ha sposato la causa di Bagron, quindi niente
 fiducia e niente trattative.
 
 Poi c'è **Argar**. Un cathar, un ex filosofo, venuto alla frontiera per farsi gli affari suoi. Le
@@ -38,7 +38,7 @@ scortata da quattro Bende Nere.
 La base verso cui stavamo andando, ci ha detto, è una via di mezzo tra una trincea e una rottamaia.
 Di palazzi non ne restano. Sono tutti asserragliati dietro barricate di rottami, e da lì escono nei
 quartieri intorno a fare ronde, rubare e ammazzare. Quattro bracci abitati e in mezzo un cerchio, un
-labirinto, con al centro la postazione principale controllata da **Jyod**. Postazioni corazzate,
+labirinto, con al centro la postazione principale, quella di Jyod. Postazioni corazzate,
 torrette. Trovare Argar ci aiuterebbe parecchio.
 
 L'abbiamo salutato e siamo andati avanti. Due Bende Nere facevano gli esagitati in mezzo alla

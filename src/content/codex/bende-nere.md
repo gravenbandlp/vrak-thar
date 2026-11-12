@@ -21,7 +21,7 @@ esserci ancora, ma tace.
 
 Nella zona di frontiera comanda il capitano **Chuddel Korg**, che guida le squadracce: un macellaio,
 senza un motivo dietro quello che fa. Hanno una roccaforte centrale molto ben difesa e, più vicino,
-un altro punto chiave tenuto dal luogotenente **Geode**, che ha i modi della vecchia guardia ma sta
-con Bagron. La base davanti ai quartieri della Banda Nobile è un labirinto di trincee e rottami
+un altro punto chiave tenuto dal luogotenente **Jyod**, che ha i modi della vecchia guardia ma sta
+con Bagron. È la base davanti ai quartieri della Banda Nobile è un labirinto di trincee e rottami
 spianato tutto intorno, senza punti da cui osservare: terrapieni, speeder fracassati, postazioni
-corazzate e torrette, con al centro la postazione principale di **Jyod**.
+corazzate e torrette, con al centro la postazione principale, dove sta lui.
