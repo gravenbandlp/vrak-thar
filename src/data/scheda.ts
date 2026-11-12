@@ -221,7 +221,7 @@ export const inventario = {
 export const esperienza = {
   livelloAttuale: 4,
   livelloProssimo: 5,
-  attuali: 8000,
+  attuali: 9000,
   soglia: 10000,
   nota:
     '',
