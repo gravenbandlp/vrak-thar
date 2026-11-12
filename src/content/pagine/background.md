@@ -1,6 +1,6 @@
 ---
 titolo: Profilo
-sottotitolo: Zabrak · Tradizione Matukai · Jedi 3
+sottotitolo: Zabrak · Tradizione Matukai · Jedi 4
 chip:
   - { l: "Età", v: "31" }
   - { l: "Origine", v: "Odarn" }
