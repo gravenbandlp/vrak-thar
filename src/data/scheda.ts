@@ -203,7 +203,7 @@ export const inventario = {
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
     { v: 'Medpac ×3', n: '300 cr — 100 cad.' },
-    { v: 'Granata a frammentazione ×5', n: '125 cr — 25 cad.' },
+    { v: 'Granata a frammentazione ×4', n: '100 cr — 25 cad.' },
     { v: 'Medical kit', n: '600 cr' },
     { v: 'Mantello ognitempo', n: '100 cr' },
     { v: 'Camouflage poncho', n: '125 cr' },
