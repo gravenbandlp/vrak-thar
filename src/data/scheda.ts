@@ -202,7 +202,7 @@ export const inventario = {
     { v: 'Spada laser', n: 'assemblata da lui, non sintonizzata' },
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
-    { v: 'Medpac ×4', n: '400 cr — 100 cad.' },
+    { v: 'Medpac ×3', n: '300 cr — 100 cad.' },
     { v: 'Granata a frammentazione ×5', n: '125 cr — 25 cad.' },
     { v: 'Medical kit', n: '600 cr' },
     { v: 'Mantello ognitempo', n: '100 cr' },
