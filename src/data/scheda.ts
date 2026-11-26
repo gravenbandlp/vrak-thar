@@ -50,7 +50,7 @@ export const risorse = {
   fpMax: 7,
   secondWind: 16,
   hpNota:
-    'Second Wind recupera <b>16 PF</b>: un quarto dei PF totali (14) o il punteggio di Costituzione (16), il maggiore dei due — qui vince Costituzione. Azione veloce, <b>1 volta al giorno</b> e mai più di una volta nello stesso incontro.',
+    'Second Wind recupera <b>16 PF</b>: un quarto dei PF totali (14) o il punteggio di Costituzione (16), il maggiore dei due — qui vince Costituzione. Azione veloce, solo se si è <b>sotto metà PF</b>, <b>1 volta al giorno</b> e mai più di una volta nello stesso incontro.',
   fpTitolo: 'Punti Forza — 5 + metà livello',
   fpNota:
     'Spendine uno per aggiungere <b>1d6</b> a una prova, o per attivare capacità specifiche. Si ricaricano interamente ad ogni passaggio di livello: i residui vanno persi.',
