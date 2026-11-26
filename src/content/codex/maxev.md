@@ -8,3 +8,5 @@ Un ragazzino di tredici anni o giù di lì, cresciuto nell'area di espansione fi
 banda. Per venti crediti ci ha detto più di quanto valessero: la storia della zona, i nomi di chi
 comanda, dove stanno le difese. È stato lui a parlarci di **Argar**, e ad averci detto di aver visto
 Nala in manette.
+
+Secondo **Argar**, adesso è nella base di **Jyod**, se è ancora vivo.

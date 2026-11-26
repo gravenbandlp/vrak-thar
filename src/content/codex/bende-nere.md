@@ -25,3 +25,9 @@ un altro punto chiave tenuto dal luogotenente **Jyod**, che ha i modi della vecc
 con Bagron. È la base davanti ai quartieri della Banda Nobile: un labirinto di trincee e rottami
 spianato tutto intorno, senza punti da cui osservare: terrapieni, speeder fracassati, postazioni
 corazzate e torrette, con al centro la postazione principale, dove sta lui.
+
+Per arrivare alla base di Jyod da questo lato bisogna passare tra mine, pattuglie e una piazza
+tenuta da una torretta automatica, con altre squadracce e cecchini appostati nei grattacieli in
+rovina ai lati. Dal davanti la base è ben difesa da torrette e pattuglie, ma da sopra, passando per
+cunicoli e tetti, si entra in una zona meno sorvegliata. Jyod sta nell'officina, e quando ci siamo
+arrivati ci ha fatti entrare e ci ha sfidati, da solo.

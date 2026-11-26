@@ -14,3 +14,7 @@ una cassa metallica che aveva manomesso. Avevo fatto bene a non fidarmi di più.
 
 Poco dopo un ragazzino, **Maxev**, ci ha detto di averla vista passare in manette, scortata da quattro
 Bende Nere.
+
+Nella base di **Jyod** è scappata ai suoi carcerieri, e il trambusto ci ha liberato un corridoio
+senza che lei lo sapesse. Più avanti ci siamo ritrovati faccia a faccia, e ci siamo alleati per
+forza di cose.
