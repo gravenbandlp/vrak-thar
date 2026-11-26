@@ -203,7 +203,6 @@ export const inventario = {
     { v: 'Nessuna armatura', n: 'dottrina Matukai' },
     { v: 'Utility belt', n: '500 cr' },
     { v: 'Medpac ×3', n: '300 cr — 100 cad.' },
-    { v: 'Granata a frammentazione ×1', n: '25 cr' },
     { v: 'Medical kit', n: '600 cr' },
     { v: 'Mantello ognitempo', n: '100 cr' },
     { v: 'Camouflage poncho', n: '125 cr' },
@@ -211,10 +210,10 @@ export const inventario = {
     { v: 'Aquata breather', n: '350 cr' },
   ],
   loot: [
-    { v: 'Pistola blaster ×21', n: '' },
+    { v: 'Pistola blaster ×22', n: '' },
     { v: 'Pistola blaster pesante ×2', n: '' },
     { v: 'Fucile blaster ×1', n: '' },
-    { v: 'Vibropicca ×7', n: '' },
+    { v: 'Vibropicca ×9', n: '' },
   ] as { v: string; n: string }[],
   nota:
     '',
