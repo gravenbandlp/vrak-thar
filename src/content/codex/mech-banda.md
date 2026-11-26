@@ -8,3 +8,6 @@ si è riprogrammato da solo con programmi bellici, si è innestato armi di ogni 
 piedi droidi molto più grossi di lui, di vecchissima generazione e stupidi. La missione se l'è data da
 sé: **annientare ogni forma di vita senziente in cui si imbatte.** Si chiama **YYY88218-XANWWK**.
 
+Stanno in una zona che confina con le piattaforme di sbarco, in un vecchio sito di produzione di
+droidi dismesso quando sono arrivati i modelli nuovi. Per quanto pericolosi, dello spazioporto non
+sembrano interessarsi, e non sconfinano.

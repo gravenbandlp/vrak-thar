@@ -8,3 +8,6 @@ dato da tutti per uomo di facciata. Poi ha fatto fuori i concorrenti e chi crede
 adesso nessuno lo dà più per tale. Resta sotto l'ombrello repubblicano e sfrutta la distanza della
 Repubblica per fare come gli pare.
 
+Qualcuno sta uccidendo la sua cerchia interna, e gli omicidi sono sempre più ravvicinati. L'ultima è
+stata **Ystis Shella**, chagrian di mezza età, avvelenata: una delle più intransigenti sul rispetto
+delle regole, che si rifaceva al nucleo fondatore della Repubblica.
