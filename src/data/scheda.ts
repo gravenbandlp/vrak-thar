@@ -212,8 +212,9 @@ export const inventario = {
   ],
   loot: [
     { v: 'Pistola blaster ×21', n: '' },
+    { v: 'Pistola blaster pesante ×2', n: '' },
     { v: 'Fucile blaster ×1', n: '' },
-    { v: 'Vibropicca ×5', n: '' },
+    { v: 'Vibropicca ×7', n: '' },
   ] as { v: string; n: string }[],
   nota:
     '',
